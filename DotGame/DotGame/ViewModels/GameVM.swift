@@ -19,11 +19,5 @@ final class GameVM: ObservableObject {
         self.map = map
         self.participators = participators
     }
-    
-    func getColors() {
-        var dictionary = [Participator? : Int]
-        for i in map.flatMap({ $0 }) {
-            
-        }
-    }
+
 }
