@@ -8,23 +8,70 @@
 
 /* Begin PBXBuildFile section */
 		B07E44552A24708D0050BFC6 /* DotGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44542A24708D0050BFC6 /* DotGameApp.swift */; };
-		B07E44572A24708D0050BFC6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44562A24708D0050BFC6 /* ContentView.swift */; };
+		B07E44572A24708D0050BFC6 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44562A24708D0050BFC6 /* GameScreen.swift */; };
 		B07E44592A24708F0050BFC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B07E44582A24708F0050BFC6 /* Assets.xcassets */; };
 		B07E445C2A24708F0050BFC6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B07E445B2A24708F0050BFC6 /* Preview Assets.xcassets */; };
 		B07E44652A24738E0050BFC6 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44642A24738E0050BFC6 /* Protocols.swift */; };
 		B07E446D2A2529100050BFC6 /* Participators.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E446C2A2529100050BFC6 /* Participators.swift */; };
-		B07E446F2A2529180050BFC6 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E446E2A2529180050BFC6 /* Map.swift */; };
+		B07E446F2A2529180050BFC6 /* MapMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E446E2A2529180050BFC6 /* MapMatrix.swift */; };
+		B07E44742A252DA10050BFC6 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44732A252DA10050BFC6 /* GameScene.swift */; };
+		B07E44772A253F810050BFC6 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44762A253F810050BFC6 /* Coordinator.swift */; };
+		B07E44792A25410F0050BFC6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44782A25410F0050BFC6 /* Extensions.swift */; };
+		B07E447D2A26CC330050BFC6 /* Hexagon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E447C2A26CC330050BFC6 /* Hexagon.swift */; };
+		B07E447F2A26CD270050BFC6 /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E447E2A26CD270050BFC6 /* StationView.swift */; };
+		B07E44852A26DDE90050BFC6 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44842A26DDE90050BFC6 /* Player.swift */; };
+		B07E44872A26DDF20050BFC6 /* Bot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44862A26DDF20050BFC6 /* Bot.swift */; };
+		B07E448D2A26E1280050BFC6 /* GameVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E448C2A26E1280050BFC6 /* GameVM.swift */; };
+		B07E448F2A26E5CE0050BFC6 /* GameSetterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E448E2A26E5CE0050BFC6 /* GameSetterVM.swift */; };
+		B07E44952A26E6D30050BFC6 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44942A26E6D30050BFC6 /* Station.swift */; };
+		B07E449B2A26EB610050BFC6 /* ParticipatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E449A2A26EB610050BFC6 /* ParticipatorType.swift */; };
+		B07E449F2A26F6610050BFC6 /* StationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E449E2A26F6600050BFC6 /* StationType.swift */; };
+		B07E44A12A26FE160050BFC6 /* MapGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44A02A26FE160050BFC6 /* MapGenerator.swift */; };
+		B07E44A62A2700750050BFC6 /* AllMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44A52A2700750050BFC6 /* AllMatrix.swift */; };
+		B07E44AA2A270AF00050BFC6 /* HoneyCombView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44A92A270AF00050BFC6 /* HoneyCombView.swift */; };
+		B07E44B02A2821D80050BFC6 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44AF2A2821D80050BFC6 /* BackgroundView.swift */; };
+		B07E44B22A2846E00050BFC6 /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44B12A2846E00050BFC6 /* StartScreen.swift */; };
+		B07E44B42A284B570050BFC6 /* RegularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44B32A284B570050BFC6 /* RegularButton.swift */; };
+		B07E44B62A284CF90050BFC6 /* CustomGameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44B52A284CF90050BFC6 /* CustomGameScreen.swift */; };
+		B07E44B82A2861540050BFC6 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44B72A2861540050BFC6 /* TextView.swift */; };
+		B07E44BA2A2870B40050BFC6 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44B92A2870B40050BFC6 /* MapView.swift */; };
+		B07E44BC2A2993D90050BFC6 /* MapSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44BB2A2993D90050BFC6 /* MapSample.swift */; };
+		B07E44BE2A2994A90050BFC6 /* MapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44BD2A2994A90050BFC6 /* MapButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B07E44512A24708D0050BFC6 /* DotGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DotGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B07E44542A24708D0050BFC6 /* DotGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotGameApp.swift; sourceTree = "<group>"; };
-		B07E44562A24708D0050BFC6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B07E44562A24708D0050BFC6 /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
 		B07E44582A24708F0050BFC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B07E445B2A24708F0050BFC6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B07E44642A24738E0050BFC6 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		B07E446C2A2529100050BFC6 /* Participators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Participators.swift; sourceTree = "<group>"; };
-		B07E446E2A2529180050BFC6 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		B07E446E2A2529180050BFC6 /* MapMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMatrix.swift; sourceTree = "<group>"; };
+		B07E44732A252DA10050BFC6 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		B07E44762A253F810050BFC6 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		B07E44782A25410F0050BFC6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B07E447C2A26CC330050BFC6 /* Hexagon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hexagon.swift; sourceTree = "<group>"; };
+		B07E447E2A26CD270050BFC6 /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
+		B07E44842A26DDE90050BFC6 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		B07E44862A26DDF20050BFC6 /* Bot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bot.swift; sourceTree = "<group>"; };
+		B07E448C2A26E1280050BFC6 /* GameVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVM.swift; sourceTree = "<group>"; };
+		B07E448E2A26E5CE0050BFC6 /* GameSetterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSetterVM.swift; sourceTree = "<group>"; };
+		B07E44942A26E6D30050BFC6 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		B07E449A2A26EB610050BFC6 /* ParticipatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipatorType.swift; sourceTree = "<group>"; };
+		B07E449E2A26F6600050BFC6 /* StationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationType.swift; sourceTree = "<group>"; };
+		B07E44A02A26FE160050BFC6 /* MapGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapGenerator.swift; sourceTree = "<group>"; };
+		B07E44A52A2700750050BFC6 /* AllMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllMatrix.swift; sourceTree = "<group>"; };
+		B07E44A92A270AF00050BFC6 /* HoneyCombView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneyCombView.swift; sourceTree = "<group>"; };
+		B07E44AB2A2716C20050BFC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B07E44AF2A2821D80050BFC6 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		B07E44B12A2846E00050BFC6 /* StartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
+		B07E44B32A284B570050BFC6 /* RegularButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularButton.swift; sourceTree = "<group>"; };
+		B07E44B52A284CF90050BFC6 /* CustomGameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGameScreen.swift; sourceTree = "<group>"; };
+		B07E44B72A2861540050BFC6 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		B07E44B92A2870B40050BFC6 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		B07E44BB2A2993D90050BFC6 /* MapSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSample.swift; sourceTree = "<group>"; };
+		B07E44BD2A2994A90050BFC6 /* MapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,10 +104,19 @@
 		B07E44532A24708D0050BFC6 /* DotGame */ = {
 			isa = PBXGroup;
 			children = (
-				B07E446B2A2529010050BFC6 /* Models */,
+				B07E44AB2A2716C20050BFC6 /* Info.plist */,
 				B07E44542A24708D0050BFC6 /* DotGameApp.swift */,
-				B07E44562A24708D0050BFC6 /* ContentView.swift */,
+				B07E44B12A2846E00050BFC6 /* StartScreen.swift */,
+				B07E44B52A284CF90050BFC6 /* CustomGameScreen.swift */,
+				B07E44562A24708D0050BFC6 /* GameScreen.swift */,
+				B07E446B2A2529010050BFC6 /* Models */,
+				B07E44882A26E0490050BFC6 /* ViewModels */,
+				B07E44752A252E7B0050BFC6 /* Scene */,
+				B07E44822A26DDBD0050BFC6 /* Views */,
+				B07E44782A25410F0050BFC6 /* Extensions.swift */,
+				B0B267AF2A29B5E4002B3E16 /* Managers */,
 				B07E44642A24738E0050BFC6 /* Protocols.swift */,
+				B07E44992A26EB520050BFC6 /* Extras */,
 				B07E44582A24708F0050BFC6 /* Assets.xcassets */,
 				B07E445A2A24708F0050BFC6 /* Preview Content */,
 			);
@@ -78,10 +134,89 @@
 		B07E446B2A2529010050BFC6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B07E446C2A2529100050BFC6 /* Participators.swift */,
-				B07E446E2A2529180050BFC6 /* Map.swift */,
+				B07E44832A26DDD10050BFC6 /* ParticipatorModel */,
+				B07E448B2A26E0FB0050BFC6 /* MapModel */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B07E44752A252E7B0050BFC6 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				B07E44732A252DA10050BFC6 /* GameScene.swift */,
+				B07E44762A253F810050BFC6 /* Coordinator.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		B07E44822A26DDBD0050BFC6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B07E44BF2A2994AE0050BFC6 /* Buttons */,
+				B07E447E2A26CD270050BFC6 /* StationView.swift */,
+				B07E447C2A26CC330050BFC6 /* Hexagon.swift */,
+				B07E44A92A270AF00050BFC6 /* HoneyCombView.swift */,
+				B07E44AF2A2821D80050BFC6 /* BackgroundView.swift */,
+				B07E44B72A2861540050BFC6 /* TextView.swift */,
+				B07E44B92A2870B40050BFC6 /* MapView.swift */,
+				B07E44BB2A2993D90050BFC6 /* MapSample.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B07E44832A26DDD10050BFC6 /* ParticipatorModel */ = {
+			isa = PBXGroup;
+			children = (
+				B07E446C2A2529100050BFC6 /* Participators.swift */,
+				B07E44842A26DDE90050BFC6 /* Player.swift */,
+				B07E44862A26DDF20050BFC6 /* Bot.swift */,
+			);
+			path = ParticipatorModel;
+			sourceTree = "<group>";
+		};
+		B07E44882A26E0490050BFC6 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B07E448E2A26E5CE0050BFC6 /* GameSetterVM.swift */,
+				B07E448C2A26E1280050BFC6 /* GameVM.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		B07E448B2A26E0FB0050BFC6 /* MapModel */ = {
+			isa = PBXGroup;
+			children = (
+				B07E44942A26E6D30050BFC6 /* Station.swift */,
+				B07E446E2A2529180050BFC6 /* MapMatrix.swift */,
+				B07E44A02A26FE160050BFC6 /* MapGenerator.swift */,
+			);
+			path = MapModel;
+			sourceTree = "<group>";
+		};
+		B07E44992A26EB520050BFC6 /* Extras */ = {
+			isa = PBXGroup;
+			children = (
+				B07E449A2A26EB610050BFC6 /* ParticipatorType.swift */,
+				B07E449E2A26F6600050BFC6 /* StationType.swift */,
+			);
+			path = Extras;
+			sourceTree = "<group>";
+		};
+		B07E44BF2A2994AE0050BFC6 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				B07E44B32A284B570050BFC6 /* RegularButton.swift */,
+				B07E44BD2A2994A90050BFC6 /* MapButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		B0B267AF2A29B5E4002B3E16 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				B07E44A52A2700750050BFC6 /* AllMatrix.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,11 +289,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B07E44572A24708D0050BFC6 /* ContentView.swift in Sources */,
+				B07E44BE2A2994A90050BFC6 /* MapButton.swift in Sources */,
+				B07E447D2A26CC330050BFC6 /* Hexagon.swift in Sources */,
+				B07E44B22A2846E00050BFC6 /* StartScreen.swift in Sources */,
+				B07E44B62A284CF90050BFC6 /* CustomGameScreen.swift in Sources */,
+				B07E44772A253F810050BFC6 /* Coordinator.swift in Sources */,
+				B07E44572A24708D0050BFC6 /* GameScreen.swift in Sources */,
 				B07E44552A24708D0050BFC6 /* DotGameApp.swift in Sources */,
+				B07E44792A25410F0050BFC6 /* Extensions.swift in Sources */,
+				B07E448F2A26E5CE0050BFC6 /* GameSetterVM.swift in Sources */,
+				B07E44852A26DDE90050BFC6 /* Player.swift in Sources */,
+				B07E447F2A26CD270050BFC6 /* StationView.swift in Sources */,
+				B07E44B02A2821D80050BFC6 /* BackgroundView.swift in Sources */,
+				B07E44A62A2700750050BFC6 /* AllMatrix.swift in Sources */,
 				B07E446D2A2529100050BFC6 /* Participators.swift in Sources */,
-				B07E446F2A2529180050BFC6 /* Map.swift in Sources */,
+				B07E446F2A2529180050BFC6 /* MapMatrix.swift in Sources */,
+				B07E44B82A2861540050BFC6 /* TextView.swift in Sources */,
+				B07E44AA2A270AF00050BFC6 /* HoneyCombView.swift in Sources */,
+				B07E44872A26DDF20050BFC6 /* Bot.swift in Sources */,
+				B07E44BA2A2870B40050BFC6 /* MapView.swift in Sources */,
+				B07E44742A252DA10050BFC6 /* GameScene.swift in Sources */,
+				B07E44BC2A2993D90050BFC6 /* MapSample.swift in Sources */,
+				B07E44A12A26FE160050BFC6 /* MapGenerator.swift in Sources */,
+				B07E449F2A26F6610050BFC6 /* StationType.swift in Sources */,
+				B07E449B2A26EB610050BFC6 /* ParticipatorType.swift in Sources */,
+				B07E44B42A284B570050BFC6 /* RegularButton.swift in Sources */,
+				B07E448D2A26E1280050BFC6 /* GameVM.swift in Sources */,
 				B07E44652A24738E0050BFC6 /* Protocols.swift in Sources */,
+				B07E44952A26E6D30050BFC6 /* Station.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,11 +448,13 @@
 				DEVELOPMENT_TEAM = K76VZ7SA7Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = DotGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,9 +462,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = AlexHor.DotGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -319,11 +482,13 @@
 				DEVELOPMENT_TEAM = K76VZ7SA7Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = DotGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -331,9 +496,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = AlexHor.DotGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
