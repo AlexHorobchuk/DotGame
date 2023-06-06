@@ -21,7 +21,7 @@ struct CustomGameScreen: View {
             
             VStack {
                 TextView(text: "CUSTOM GAME", fontSize: 26)
-                    .padding(.top, 30)
+                    .padding(.top, 40)
                 
                 MapSample(map: gameSetter.makeSelectedMap())
                     .padding()
@@ -38,11 +38,12 @@ struct CustomGameScreen: View {
                     }
                 }
                 .frame(height: 270)
+                .frame(maxWidth: UIScreen.main.bounds.width)
                 
                 NavigationLink(destination:
-                                GameScreen(game: GameVM(map: gameSetter.makeSelectedMap(),
-                                                        participators: gameSetter.participators)),
-                       label: {
+                                GameScreen(game:
+                                            GameVM(gameInfo: gameSetter.getGameInfo(for: .custom))),
+                               label: {
                     RegularButton(animate: $animation,
                                   text: "START")
                     .scaleEffect(animation ? 0.8 : 1)

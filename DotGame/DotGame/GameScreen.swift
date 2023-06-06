@@ -15,25 +15,34 @@ struct GameScreen: View {
     
     var body: some View {
         
-        VStack {
+        VStack() {
+            
+            GameProgress(stationColorData: game.stationColorData)
+                .frame(height: 20)
+                .padding(.top, 60)
+            
+            Spacer()
+            
             ZStack {
-                MapView(stations: game.map)
+                GameMapView(game: game)
                 
                 GeometryReader { gr in
-                    GameSpriteView(viewModel: game, size: .zero)
+                    GameSpriteView(viewModel: game, size: gr.size)
                         .frame(width: gr.size.width, height: gr.size.height)
-                        .onAppear(perform: { print(gr.size) })
                 }
+                .allowsHitTesting(false)
             }
             .fixedSize()
+            
+            Spacer()
         }
         .onAppear(perform: {
-            print(game.participators)
-            self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-                for i in game.map.indices {
-                    for j in game.map[i].indices {
-                        game.map[i][j].updateStation()
+            self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+                DispatchQueue.main.async {
+                    withAnimation(.easeInOut(duration: 1)) {
+                        game.getColor()
                     }
+                    game.updateMap()
                 }
             }
         })
@@ -42,6 +51,9 @@ struct GameScreen: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        GameScreen(game: GameVM(map: MapGenerator().makeMapFromMatrix(mapMatrix: AllMatrixManager.shared.getFirst()), participators: []))
+        GameScreen(game:
+                    GameVM(map: MapGenerator().makeMapFromMatrix(mapMatrix: AllMatrixManager.shared.getFirst()),
+                           participators: [],
+                           matrix: AllMatrixManager.shared.getFirst().matrix))
     }
 }

@@ -15,7 +15,7 @@ final class MapGenerator {
             for (col, val) in arr.enumerated() {
                 let station = Station(type: val == 0 ? .empty : .active,
                                       owner: ParticipatorType(rawValue: val),
-                                      position: (row, col),
+                                      position: Coordinate(x: col, y: row),
                                       ballsAmount: ParticipatorType(rawValue: val) == nil ? 10 : 0)
                 map[row].append(station)
             }

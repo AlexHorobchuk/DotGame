@@ -7,14 +7,14 @@
 
 import Foundation
 
-class Participator {
+class Participator: ObservableObject {
     
-    var stations: [Station]
+    @Published var selectedStations: [Station] = []
+    
     var mover: MoverService?
     var type: ParticipatorType
 
     init(stations: [Station], type: ParticipatorType) {
-        self.stations = stations
         self.type = type
     }
     

@@ -26,6 +26,6 @@ struct HoneyCombView: View {
 
 struct HoneyCombView_Previews: PreviewProvider {
     static var previews: some View {
-        HoneyCombView(station: Station(type: .empty, position: (1,1), ballsAmount: 20))
+        HoneyCombView(station: Station(type: .empty, position: (Coordinate(x: 1, y: 1)), ballsAmount: 20))
     }
 }

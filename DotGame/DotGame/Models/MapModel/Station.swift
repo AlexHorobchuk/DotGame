@@ -13,10 +13,10 @@ class Station: Identifiable, ObservableObject {
     @Published var owner: ParticipatorType?
     @Published var ballsAmount: Int
     
-    var position: (Int, Int)
+    var position: Coordinate
     var id = UUID()
     
-    init(type: StationType, owner: ParticipatorType? = nil, position: (Int, Int), ballsAmount: Int) {
+    init(type: StationType, owner: ParticipatorType? = nil, position: Coordinate, ballsAmount: Int) {
         self.type = type
         self.owner = owner
         self.position = position

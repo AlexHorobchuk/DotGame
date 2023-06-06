@@ -15,9 +15,9 @@ enum ParticipatorType: Int, RawRepresentable {
         switch self {
             
         case .realPlayer:
-            return Player(stations: stations)
+            return Player(stations: [])
         default:
-            return BotPlayer(stations: stations, type: self)
+            return BotPlayer(stations: [], type: self)
         }
     }
     
@@ -25,7 +25,7 @@ enum ParticipatorType: Int, RawRepresentable {
         switch self {
             
         case .one:
-            return Color.pink
+            return Color.green
         case .two:
             return Color.red
         case .three:

@@ -28,8 +28,16 @@ final class GameSetterVM: ObservableObject {
     }
     
     func playRandom() -> [[Station]] {
-        selectedMatrix = matrixs.randomElement() ?? MapMatrix(name: "One on One", player: 2, matrix: [[2, 1, 3]])
+        DispatchQueue.main.async {
+            self.selectedMatrix = self.matrixs.randomElement() ?? MapMatrix(name: "One on One", player: 2, matrix: [[2, 1, 3]])
+        }
         return makeSelectedMap()
+    }
+    
+    func getGameInfo(for type: GameType) -> GameInfo {
+        return GameInfo(map: type == .random ? playRandom() : makeSelectedMap(),
+                        participators: participators,
+                        matrix: selectedMatrix.matrix)
     }
     
     func makeMapAndParticipators(mapMatrix: MapMatrix) -> [[Station]] {
@@ -38,7 +46,7 @@ final class GameSetterVM: ObservableObject {
             for (col, val) in arr.enumerated() {
                 let station = Station(type: val == 0 ? .empty : .active,
                                       owner: ParticipatorType(rawValue: val),
-                                      position: (row, col),
+                                      position: Coordinate(x: col, y: row),
                                       ballsAmount: ParticipatorType(rawValue: val) == nil ? 10 : 0)
                 map[row].append(station)
                 makeParticipators(station: station, value: val)

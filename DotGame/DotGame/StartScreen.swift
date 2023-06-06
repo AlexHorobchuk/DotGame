@@ -25,8 +25,8 @@ struct StartScreen: View {
                 VStack(spacing: 40) {
                     
                     NavigationLink(destination:
-                                    GameScreen(game: GameVM(map: gameSetter.playRandom(),
-                                                             participators: gameSetter.participators))) {
+                                    GameScreen(game:
+                                                GameVM(gameInfo: gameSetter.getGameInfo(for: .random)))) {
                         RegularButton(animate: $animate, text: "START GAME")
                     }
                     

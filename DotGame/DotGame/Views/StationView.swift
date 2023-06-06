@@ -33,6 +33,6 @@ struct StationView: View {
 
 struct StationView_Previews: PreviewProvider {
     static var previews: some View {
-        StationView(station: Station(type: .active, position: (1,1), ballsAmount: 41))
+        StationView(station: Station(type: .active, position: Coordinate(x: 1, y: 1), ballsAmount: 41))
     }
 }

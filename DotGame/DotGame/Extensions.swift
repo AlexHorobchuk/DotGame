@@ -9,7 +9,13 @@ import SwiftUI
 
 extension GameScene: MoverService {
     
-    func move(ballsQountity: Int, from stationA: Station, to stationB: Station, by: Participator) {
+    func move(ballsQountity: Int, from stationA: Station, to stationB: Station, by participator: Participator) {
+        guard let coordinatsA = stationCoordinates[stationA.position],
+           let coordinatsB = stationCoordinates[stationB.position]
+            else { return }
+        let ball = createBall(at: coordinatsA, owner: participator.type)
+        ball.run(.move(to: coordinatsB, duration: 2))
+        print("Hello")
         
     }
 }
@@ -24,7 +30,7 @@ extension GameVM: Equatable {
 extension Station: Equatable {
     
     static func == (lhs: Station, rhs: Station) -> Bool {
-        return lhs.owner == rhs.owner && lhs.ballsAmount == rhs.ballsAmount
+        return lhs.id == rhs.id
     }
 }
 

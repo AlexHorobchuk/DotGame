@@ -9,19 +9,26 @@ import Foundation
 
 final class Player: Participator {
     
-    var selectedStation: Station?
-    
     init(stations: [Station]) {
         super.init(stations: stations, type: .realPlayer)
     }
 
     override func attack(station: Station) {
-        guard let selectedStation = selectedStation, selectedStation.ballsAmount > 0 else { return }
-        mover?.move(ballsQountity: selectedStation.ballsAmount, from: selectedStation, to: station, by: self)
+        guard selectedStations.isEmpty == false else { return }
+        for selectedStation in selectedStations {
+            mover?.move(ballsQountity: selectedStation.ballsAmount, from: selectedStation, to: station, by: self)
+        }
     }
     
     func stationTapped(station: Station) {
-        guard station.owner == self.type else { return selectedStation = station }
-        attack(station: station)
+        if station.type == .active {
+            if station.owner == .realPlayer {
+                guard selectedStations.contains(station) else { return selectedStations.append(station) }
+                selectedStations.removeAll(where: { $0 == station })
+            }
+            else {
+                attack(station: station)
+            }
+        }
     }
 }

@@ -9,6 +9,6 @@ import Foundation
 
 protocol MoverService: AnyObject {
     
-    func move(ballsQountity: Int, from stationA: Station, to stationB: Station, by: Participator)
+    func move(ballsQountity: Int, from stationA: Station, to stationB: Station, by participator: Participator)
 }
 
