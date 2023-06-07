@@ -11,13 +11,15 @@ struct CustomGameScreen: View {
     
     @ObservedObject var gameSetter: GameSetterVM
     
-    @State var animation = true
+    @State var animate = true
     @State var animateGreed = true
+    @State var timer: Timer?
     
     var body: some View {
         
         ZStack {
             BackgroundView(animation: $animateGreed)
+                .animation(.easeInOut(duration: 3))
             
             VStack {
                 TextView(text: "CUSTOM GAME", fontSize: 26)
@@ -30,7 +32,7 @@ struct CustomGameScreen: View {
                     ForEach(gameSetter.matrixs) { matrix in
                         Button(action: { gameSetter.selectMatrix(matrix) } ,
                                label: {
-                            MapButton(animate: $animation,
+                            MapButton(
                                       isSelected: matrix.id == gameSetter.selectedMatrix.id,
                                       matrix: matrix)
                                .padding(5)
@@ -40,13 +42,15 @@ struct CustomGameScreen: View {
                 .frame(height: 270)
                 .frame(maxWidth: UIScreen.main.bounds.width)
                 
-                NavigationLink(destination:
-                                GameScreen(game:
-                                            GameVM(gameInfo: gameSetter.getGameInfo(for: .custom))),
+                
+                NavigationLink(destination: {
+                    GameScreen(game:
+                                GameVM(gameInfo: gameSetter.getGameInfo(for: .custom)))}
+                               ,
                                label: {
-                    RegularButton(animate: $animation,
+                    RegularButton(animate: $animate,
                                   text: "START")
-                    .scaleEffect(animation ? 0.8 : 1)
+                    .scaleEffect(animate ? 0.8 : 1)
                 })
                 .padding()
                 
@@ -55,14 +59,19 @@ struct CustomGameScreen: View {
         }
         .onAppear {
             DispatchQueue.main.async {
+                gameSetter.selectedMatrix = gameSetter.matrixs.first!
                 withAnimation(.easeInOut(duration: 2.0).repeatForever()) {
-                    animation.toggle() }
+                    animate.toggle()
+                }
             }
-            
-            DispatchQueue.main.async {
-                withAnimation(.easeInOut(duration: 3.0).repeatForever()) {
-                    animateGreed.toggle() }
+            self.timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
+                DispatchQueue.main.async {
+                        animateGreed.toggle()
+                }
             }
+        }
+        .onDisappear {
+            timer?.invalidate()
         }
     }
 }

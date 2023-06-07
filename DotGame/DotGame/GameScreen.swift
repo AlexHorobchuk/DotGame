@@ -20,6 +20,7 @@ struct GameScreen: View {
             GameProgress(stationColorData: game.stationColorData)
                 .frame(height: 20)
                 .padding(.top, 60)
+                .animation(.easeInOut(duration: 1))
             
             Spacer()
             
@@ -36,16 +37,19 @@ struct GameScreen: View {
             
             Spacer()
         }
-        .onAppear(perform: {
+        .onAppear {
             self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
                 DispatchQueue.main.async {
                     withAnimation(.easeInOut(duration: 1)) {
                         game.getColor()
                     }
-                    game.updateMap()
+                    game.updateGame()
                 }
             }
-        })
+        }
+        .onDisappear {
+            timer?.invalidate()
+        }
     }
 }
 

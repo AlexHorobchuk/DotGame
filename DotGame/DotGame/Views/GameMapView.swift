@@ -22,6 +22,7 @@ struct GameMapView: View {
                                     .stroke(Color.red,
                                             lineWidth: game.isSelected(station: station) ? 2 : 0)
                                     .frame(width: 72, height: 72)
+                                    .animation(.easeInOut(duration: 0.05))
                             )
                             .clipShape(Hexagon(radius: 10))
                             .onTapGesture(perform:

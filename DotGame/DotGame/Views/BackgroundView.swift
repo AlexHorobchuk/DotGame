@@ -26,7 +26,7 @@ struct BackgroundView: View {
             ZStack {
                 VStack(spacing: -17) {
                     
-                    ForEach(1..<17, id: \.self) { row in
+                    ForEach(1..<18, id: \.self) { row in
                         
                         let col = row % 2 == 0 ? 7 : 8
                         

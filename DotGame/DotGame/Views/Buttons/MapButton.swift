@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MapButton: View {
     
-    @Binding var animate: Bool
+    @State var animate = true
     var isSelected: Bool
     var matrix: MapMatrix
     
@@ -19,15 +19,12 @@ struct MapButton: View {
             
             RoundedRectangle(cornerRadius: 15)
                 .fill(Color.red)
-                .shadow(color: .red ,radius: 5)
+                .shadow(color: isSelected ? .blue : .red ,radius: 5)
             
             if isSelected {
                 RoundedRectangle(cornerRadius: 15)
-                    .stroke(lineWidth: 5)
-                    .fill(
-                        LinearGradient(colors: [.blue, .orange , .yellow, .orange, .blue],
-                                       startPoint: animate ? .leading : .trailing,
-                                       endPoint: animate ? .trailing : .leading))
+                    .stroke(lineWidth: 3)
+                    .fill(Color.blue)
             }
             
             HStack {
@@ -60,12 +57,19 @@ struct MapButton: View {
             }
             .padding(.horizontal)
         }
+        .onAppear(perform: {
+            DispatchQueue.main.async {
+                withAnimation(.easeInOut(duration: 2.0).repeatForever()) {
+                    animate.toggle()
+                }
+            }
+        })
         .frame(width: 280, height: 55)
     }
 }
 
 struct MapButton_Previews: PreviewProvider {
     static var previews: some View {
-        MapButton( animate: .constant(true), isSelected: true, matrix: MapMatrix(name: "One on One", player: 4, matrix: []))
+        MapButton( isSelected: true, matrix: MapMatrix(name: "One on One", player: 4, matrix: []))
     }
 }

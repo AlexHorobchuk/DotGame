@@ -62,6 +62,14 @@ final class GameVM: ObservableObject {
         stationColorData = colorDict
     }
     
+    func stationAttacked(station: Station, by participator: ParticipatorType) {
+        let needUpdate = station.underAttack(of: participator)
+        if needUpdate {
+            let player = findParticipator(type: .realPlayer)
+            player.selectedStations.removeAll(where: { $0.id == station.id })
+        }
+    }
+    
     func updateMap() {
         for i in map.indices {
             for j in map[i].indices {
@@ -76,8 +84,44 @@ final class GameVM: ObservableObject {
         }
     }
     
+    func findParticipator(type: ParticipatorType) -> Participator {
+        return participators.first(where: {$0.type == type})!
+    }
+    
+    func setSelectedStations() {
+        for station in map.flatMap({ $0 }) {
+            if station.owner != .realPlayer && station.type == .active {
+                guard let owner = station.owner else { continue }
+                let participator = findParticipator(type: owner)
+                participator.selectedStations.append(station)
+            }
+        }
+    }
+    
+    func getBots() -> [BotPlayer] {
+        return participators.compactMap { participator in
+            if let botPlayer = participator as? BotPlayer, botPlayer.type != .realPlayer {
+                return botPlayer
+            }
+            return nil
+        }
+    }
+    
+    func botsAttack() {
+        for bot in getBots() {
+            bot.attack(station: bot.findStationToAttack(stations: map.flatMap({ $0 }))!)
+            bot.clearStation()
+        }
+    }
+    
     func updateGame() {
         updateMap()
         getColor()
+        setSelectedStations()
+        botsAttack()
+    }
+    
+    func getStationByCoordinates(coordinates: Coordinate) -> Station? {
+        return map.flatMap({ $0 }).first(where: { $0.position == coordinates })
     }
 }

@@ -52,4 +52,8 @@ class AllMatrixManager {
     func getFirst() -> MapMatrix {
         return matrix.first!
     }
+    
+    func getRandom() -> MapMatrix {
+        return matrix.randomElement()!
+    }
 }

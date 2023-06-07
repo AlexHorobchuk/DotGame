@@ -16,7 +16,7 @@ final class Player: Participator {
     override func attack(station: Station) {
         guard selectedStations.isEmpty == false else { return }
         for selectedStation in selectedStations {
-            mover?.move(ballsQountity: selectedStation.ballsAmount, from: selectedStation, to: station, by: self)
+            mover?.move(from: selectedStation, to: station, by: self)
         }
     }
     

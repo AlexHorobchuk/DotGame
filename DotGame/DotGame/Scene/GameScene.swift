@@ -73,4 +73,26 @@ final class GameScene: SKScene {
             startingHeight -= ySpacing
         }
     }
+        
+    func sendBalls(index: Int, maxBalls: Int, from stationA: Station, to stationB: Station, by participator: Participator) {
+        guard let coordinatsA = stationCoordinates[stationA.position],
+           let coordinatsB = stationCoordinates[stationB.position]
+            else { return }
+        let ball = createBall(at: coordinatsA, owner: participator.type)
+        let angle = atan2(coordinatsB.y - coordinatsA.y, coordinatsB.x - coordinatsA.x)
+        let adjustmentAngle = angle + CGFloat(index - (maxBalls - 1) / 2) * 20.0 * .pi / 180.0
+        let coordinatesX = coordinatsA.x + 30 * cos(adjustmentAngle)
+        let coordinatesY = coordinatsA.y + 30 * sin(adjustmentAngle)
+        let timeToStart = coordinatsA.distance(point: CGPoint(x: coordinatesX, y: coordinatesY)) / 80
+        let timeToFinish = CGPoint(x: coordinatesX, y: coordinatesY).distance(point: coordinatsB) / 80
+        
+        
+        let getToStart = SKAction.move(to: CGPoint(x: coordinatesX, y: coordinatesY), duration: timeToStart)
+        let getToStation = SKAction.move(to: coordinatsB, duration: timeToFinish)
+        let attackStation = SKAction.run { self.viewModel.stationAttacked(station: stationB, by: participator.type) }
+        let removeBall = SKAction.run { ball.removeFromParent() }
+        
+        ball.run(.sequence([getToStart, getToStation, attackStation, removeBall]))
+        
+    }
 }

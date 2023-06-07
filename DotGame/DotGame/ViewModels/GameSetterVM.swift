@@ -24,7 +24,13 @@ final class GameSetterVM: ObservableObject {
     }
     
     func selectMatrix(_ matrix: MapMatrix) {
-        selectedMatrix = matrix
+        self.selectedMatrix = matrix
+    }
+    
+    func setFirstMatrix() {
+        DispatchQueue.main.async {
+            self.selectedMatrix = self.matrixs.first ??  MapMatrix(name: "One on One", player: 2, matrix: [[2, 1, 3]])
+        }
     }
     
     func playRandom() -> [[Station]] {

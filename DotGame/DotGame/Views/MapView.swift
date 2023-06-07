@@ -21,5 +21,6 @@ struct MapView: View {
                 }
             }
         }
+        .animation(nil)
     }
 }

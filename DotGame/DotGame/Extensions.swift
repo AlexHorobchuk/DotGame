@@ -6,17 +6,29 @@
 //
 
 import SwiftUI
+import SpriteKit
 
 extension GameScene: MoverService {
     
-    func move(ballsQountity: Int, from stationA: Station, to stationB: Station, by participator: Participator) {
-        guard let coordinatsA = stationCoordinates[stationA.position],
-           let coordinatsB = stationCoordinates[stationB.position]
-            else { return }
-        let ball = createBall(at: coordinatsA, owner: participator.type)
-        ball.run(.move(to: coordinatsB, duration: 2))
-        print("Hello")
+    func move(from stationA: Station, to stationB: Station, by participator: Participator) {
+        guard let station = viewModel.getStationByCoordinates(coordinates: stationA.position) else { return }
         
+        if station.owner == participator.type && station.ballsAmount > 0 {
+            let maxBalls = station.getBallsForAttack()
+            let sendAction = SKAction.run {
+                for index in 0..<maxBalls {
+                    self.sendBalls(index: index, maxBalls: maxBalls, from: stationA, to: stationB, by: participator)
+                }
+            }
+            let repeatAction = SKAction.run { self.move(from: stationA, to: stationB, by: participator) }
+            self.run(.sequence([sendAction, .wait(forDuration: 0.25), repeatAction]))
+        }
+    }
+}
+
+extension CGPoint {
+    func distance(point: CGPoint) -> CGFloat {
+        return abs(CGFloat(hypotf(Float(point.x - x), Float(point.y - y))))
     }
 }
 

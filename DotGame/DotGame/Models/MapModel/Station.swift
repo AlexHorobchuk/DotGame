@@ -30,4 +30,36 @@ class Station: Identifiable, ObservableObject {
             if owner != nil && ballsAmount < 50 { ballsAmount += 1 }
         }
     }
+    
+    func getBallsForAttack() -> Int {
+        var ballsForAttack = 0
+        if ballsAmount > 5 {
+            ballsForAttack = 5
+        }
+        else {
+            ballsForAttack = ballsAmount
+        }
+        ballsAmount -= ballsForAttack
+        return ballsForAttack
+    }
+    
+    func underAttack(of participator: ParticipatorType) -> Bool {
+        var needUpdate = false
+        if participator == owner {
+            ballsAmount += 1
+        }
+        else {
+            if ballsAmount == 0 {
+                if owner == .realPlayer {
+                    needUpdate = true
+                }
+                owner = participator
+            }
+            else {
+                ballsAmount -= 1
+            }
+            
+        }
+        return needUpdate
+    }
 }
