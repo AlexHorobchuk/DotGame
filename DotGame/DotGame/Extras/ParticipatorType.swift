@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum ParticipatorType: Int, RawRepresentable {
+enum ParticipatorType: Int, RawRepresentable, CaseIterable {
     
     case realPlayer = 2 , one, two, three, four, five
     
@@ -55,6 +55,33 @@ enum ParticipatorType: Int, RawRepresentable {
         case .realPlayer:
             return "hare.fill"
         }
-        
+    }
+    
+    func getMyBitMask() -> UInt32 {
+        switch self {
+            
+        case .realPlayer:
+            return 2
+        case .one:
+            return 4
+        case .two:
+            return 8
+        case .three:
+            return 16
+        case .four:
+            return 32
+        case .five:
+            return 64
+        }
+    }
+    
+    func getEnemysBitsMask() -> UInt32 {
+        var combinedBitmask: UInt32 = 0
+
+        for case let enemyCase in ParticipatorType.allCases where enemyCase != self {
+            combinedBitmask |= enemyCase.getMyBitMask()
+        }
+
+        return combinedBitmask
     }
 }

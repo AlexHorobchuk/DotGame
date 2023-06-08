@@ -14,7 +14,7 @@ final class BotPlayer: Participator {
     }
     
     private func makeDecision() -> Bool {
-        return [true, false, false].randomElement()!
+        return [true, false, false, false].randomElement()!
     }
     
     func findStationToAttack(stations: [Station]) -> Station? {

@@ -28,6 +28,7 @@ struct StationView: View {
             }
         }
         .frame(width: 73, height: 73)
+        .animation(nil)
     }
 }
 

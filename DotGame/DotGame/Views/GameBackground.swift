@@ -22,7 +22,7 @@ struct GameBackground: View {
                         HStack(spacing: 5) {
                             ForEach(0..<col, id: \.self) { column in
                                 Hexagon(radius: 10)
-                                    .stroke(Color.black, lineWidth: 4)
+                                    .fill(Color.gray)
                                     .frame(width: 73, height: 73)
                                     .mask(Hexagon(radius: 10))
                             }

@@ -12,6 +12,8 @@ final class GameVM: ObservableObject {
     @Published var map: [[Station]]
     @Published var stationColorData: [Int: Int] = [:]
     @Published var participators: [Participator]
+    @Published var gameState = GameState.preStart
+    @Published var didWin: Bool?
     
     var matrix: [[Int]]
     
@@ -41,6 +43,18 @@ final class GameVM: ObservableObject {
     func stationTapped(station: Station) {
         if let player = getPlayer() {
             player.stationTapped(station: station)
+        }
+    }
+    
+    func stationDoubleTapped(station: Station) {
+        if let player = getPlayer() {
+            player.stationDoubleTapped(station: station)
+        }
+    }
+    
+    func clearPlayerStations() {
+        if let player = getPlayer() {
+            player.selectedStations = []
         }
     }
     
@@ -109,7 +123,8 @@ final class GameVM: ObservableObject {
     
     func botsAttack() {
         for bot in getBots() {
-            bot.attack(station: bot.findStationToAttack(stations: map.flatMap({ $0 }))!)
+            guard let station = bot.findStationToAttack(stations: map.flatMap({ $0 })) else { return }
+            bot.attack(station: station)
             bot.clearStation()
         }
     }

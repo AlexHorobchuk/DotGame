@@ -15,40 +15,50 @@ struct GameScreen: View {
     
     var body: some View {
         
-        VStack() {
-            
-            GameProgress(stationColorData: game.stationColorData)
-                .frame(height: 20)
-                .padding(.top, 60)
-                .animation(.easeInOut(duration: 1))
-            
-            Spacer()
-            
-            ZStack {
-                GameMapView(game: game)
-                
-                GeometryReader { gr in
-                    GameSpriteView(viewModel: game, size: gr.size)
-                        .frame(width: gr.size.width, height: gr.size.height)
-                }
-                .allowsHitTesting(false)
-            }
-            .fixedSize()
-            
-            Spacer()
-        }
-        .onAppear {
-            self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-                DispatchQueue.main.async {
-                    withAnimation(.easeInOut(duration: 1)) {
-                        game.getColor()
+        ZStack {
+            if game.gameState == .preStart {
+                PreGame()
+                    .ignoresSafeArea()
+                    .onTapGesture {
+                        game.gameState = .start
                     }
-                    game.updateGame()
+            }
+            
+            if game.gameState == .start {
+                VStack {
+                    
+                    GameProgress(stationColorData: game.stationColorData)
+                        .frame(height: 20)
+                        .padding(.top, 60)
+                        .animation(.easeInOut(duration: 0.5))
+                    
+                    Spacer()
+                    
+                    ZStack {
+                        GameMapView(game: game)
+                            .animation(nil)
+                        
+                        GeometryReader { gr in
+                            GameSpriteView(viewModel: game, size: gr.size)
+                                .frame(width: gr.size.width, height: gr.size.height)
+                        }
+                    }
+                    .fixedSize()
+                    
+                    Spacer()
+                }
+                .onAppear {
+                    self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+                        DispatchQueue.main.async {
+                            game.getColor()
+                            game.updateGame()
+                        }
+                    }
+                }
+                .onDisappear {
+                    timer?.invalidate()
                 }
             }
-        }
-        .onDisappear {
-            timer?.invalidate()
         }
     }
 }

@@ -7,6 +7,24 @@
 
 import SpriteKit
 
+class HexagonNode: SKShapeNode {
+    var station: Station
+    
+    init(station: Station) {
+        self.station = station
+        let hexagonPath = Hexagon(radius: 10).path(in: CGRect(x: 0, y: 0, width: 73, height: 72))
+        super.init()
+        
+        self.path = hexagonPath.cgPath
+        self.fillColor = .clear
+        self.strokeColor = .clear
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
     
 final class GameScene: SKScene {
     
@@ -27,15 +45,68 @@ final class GameScene: SKScene {
         backgroundColor = SKColor(red: 0, green: 0, blue: 0, alpha: 0)
         self.view?.allowsTransparency = true
         self.view?.backgroundColor = .clear
+        physicsWorld.contactDelegate = self
         viewModel.logic = self
         makeCoordinatefromMatrix()
         viewModel.setParticipators()
+        createAllHexagons()
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+        view.addGestureRecognizer(panGesture)
+        print(stationCoordinates.values)
+    }
+    
+    @objc func handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
+        let location = recognizer.location(in: self.view)
+        let locationInScene = convertPoint(fromView: location)
+            switch recognizer.state {
+            case .began:
+                print(location)
+                guard let station = findStationWithLocation(location: locationInScene) else { return }
+                viewModel.stationTapped(station: station)
+                
+            case .ended, .cancelled:
+                guard let station = findStationWithLocation(location: locationInScene) else { return }
+                viewModel.stationDoubleTapped(station: station)
+            default:
+                break
+            }
+        }
+
+    func findStationWithLocation(location: CGPoint) -> Station? {
+        let nodes = self.nodes(at: location)
+        print(nodes)
+        for node in nodes {
+            if let hexagonNode = node as? HexagonNode {
+                return hexagonNode.station
+            }
+        }
+        return nil
+    }
+    
+    func createAllHexagons() {
+        for station in viewModel.map.flatMap( { $0 } ) {
+            createHexagon(station: station)
+        }
+    }
+    
+    func createHexagon(station: Station) {
+        let hexagon = HexagonNode(station: station)
+        let postition = CGPoint(x: (stationCoordinates[station.position]?.x ?? 0) - 37,
+                                y: (stationCoordinates[station.position]?.y ?? 0) - 36.5)
+        hexagon.position =  postition
+        self.addChild(hexagon)
     }
     
     func createBall(at point: CGPoint, owner: ParticipatorType, radius: CGFloat = 6) -> SKShapeNode {
         let ballNode = SKShapeNode(circleOfRadius: radius)
         ballNode.fillColor = SKColor(owner.getParticipatorColor())
         ballNode.position = point
+        
+        ballNode.physicsBody = SKPhysicsBody(circleOfRadius: radius)
+        ballNode.physicsBody?.categoryBitMask = owner.getMyBitMask()
+        ballNode.physicsBody?.contactTestBitMask = owner.getEnemysBitsMask()
+        ballNode.physicsBody?.affectedByGravity = false
+        
         self.addChild(ballNode)
         return ballNode
     }
@@ -83,8 +154,8 @@ final class GameScene: SKScene {
         let adjustmentAngle = angle + CGFloat(index - (maxBalls - 1) / 2) * 20.0 * .pi / 180.0
         let coordinatesX = coordinatsA.x + 30 * cos(adjustmentAngle)
         let coordinatesY = coordinatsA.y + 30 * sin(adjustmentAngle)
-        let timeToStart = coordinatsA.distance(point: CGPoint(x: coordinatesX, y: coordinatesY)) / 80
-        let timeToFinish = CGPoint(x: coordinatesX, y: coordinatesY).distance(point: coordinatsB) / 80
+        let timeToStart = coordinatsA.distance(point: CGPoint(x: coordinatesX, y: coordinatesY)) / 60
+        let timeToFinish = CGPoint(x: coordinatesX, y: coordinatesY).distance(point: coordinatsB) / 60
         
         
         let getToStart = SKAction.move(to: CGPoint(x: coordinatesX, y: coordinatesY), duration: timeToStart)

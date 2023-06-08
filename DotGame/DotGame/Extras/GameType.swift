@@ -10,3 +10,7 @@ import Foundation
 enum GameType {
     case random, custom
 }
+
+enum GameState {
+    case preStart, start, end
+}

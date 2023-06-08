@@ -20,14 +20,10 @@ struct GameMapView: View {
                             .overlay(
                                 Hexagon(radius: 10)
                                     .stroke(Color.red,
-                                            lineWidth: game.isSelected(station: station) ? 2 : 0)
+                                            lineWidth: game.isSelected(station: station) && station.owner == .realPlayer ? 2 : 0)
                                     .frame(width: 72, height: 72)
-                                    .animation(.easeInOut(duration: 0.05))
                             )
                             .clipShape(Hexagon(radius: 10))
-                            .onTapGesture(perform:
-                                            { game.stationTapped(station: station)
-                            })
                     }
                 }
             }

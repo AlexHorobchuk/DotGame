@@ -20,14 +20,18 @@ final class Player: Participator {
         }
     }
     
+    func stationDoubleTapped(station: Station) {
+        if station.type == .active {
+            attack(station: station)
+            selectedStations = []
+        }
+    }
+    
     func stationTapped(station: Station) {
         if station.type == .active {
             if station.owner == .realPlayer {
                 guard selectedStations.contains(station) else { return selectedStations.append(station) }
                 selectedStations.removeAll(where: { $0 == station })
-            }
-            else {
-                attack(station: station)
             }
         }
     }

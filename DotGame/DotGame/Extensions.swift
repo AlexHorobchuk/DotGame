@@ -26,6 +26,16 @@ extension GameScene: MoverService {
     }
 }
 
+extension GameScene: SKPhysicsContactDelegate {
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        guard let bodyA = contact.bodyA.node as? SKShapeNode else { return }
+        guard let bodyB = contact.bodyB.node as? SKShapeNode else { return }
+        bodyA.removeFromParent()
+        bodyB.removeFromParent()
+    }
+}
+
 extension CGPoint {
     func distance(point: CGPoint) -> CGFloat {
         return abs(CGFloat(hypotf(Float(point.x - x), Float(point.y - y))))

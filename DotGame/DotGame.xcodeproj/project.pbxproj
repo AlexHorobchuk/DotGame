@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B05377AC2A3181DC00F323A2 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377AB2A3181DC00F323A2 /* GameOver.swift */; };
+		B05377AE2A3181F700F323A2 /* PreGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377AD2A3181F700F323A2 /* PreGame.swift */; };
+		B05377B02A3188CB00F323A2 /* GameBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377AF2A3188CB00F323A2 /* GameBackground.swift */; };
 		B07E44552A24708D0050BFC6 /* DotGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44542A24708D0050BFC6 /* DotGameApp.swift */; };
 		B07E44572A24708D0050BFC6 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44562A24708D0050BFC6 /* GameScreen.swift */; };
 		B07E44592A24708F0050BFC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B07E44582A24708F0050BFC6 /* Assets.xcassets */; };
@@ -45,6 +48,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B05377AB2A3181DC00F323A2 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
+		B05377AD2A3181F700F323A2 /* PreGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreGame.swift; sourceTree = "<group>"; };
+		B05377AF2A3188CB00F323A2 /* GameBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBackground.swift; sourceTree = "<group>"; };
 		B07E44512A24708D0050BFC6 /* DotGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DotGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B07E44542A24708D0050BFC6 /* DotGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotGameApp.swift; sourceTree = "<group>"; };
 		B07E44562A24708D0050BFC6 /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
@@ -173,6 +179,9 @@
 				B07E44B92A2870B40050BFC6 /* MapView.swift */,
 				B07E44BB2A2993D90050BFC6 /* MapSample.swift */,
 				B0B267C22A2DD8D1002B3E16 /* GameMapView.swift */,
+				B05377AB2A3181DC00F323A2 /* GameOver.swift */,
+				B05377AF2A3188CB00F323A2 /* GameBackground.swift */,
+				B05377AD2A3181F700F323A2 /* PreGame.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -313,6 +322,7 @@
 				B07E44552A24708D0050BFC6 /* DotGameApp.swift in Sources */,
 				B0B267C12A2C3DDF002B3E16 /* Coordinates.swift in Sources */,
 				B07E44792A25410F0050BFC6 /* Extensions.swift in Sources */,
+				B05377AC2A3181DC00F323A2 /* GameOver.swift in Sources */,
 				B07E448F2A26E5CE0050BFC6 /* GameSetterVM.swift in Sources */,
 				B07E44852A26DDE90050BFC6 /* Player.swift in Sources */,
 				B07E447F2A26CD270050BFC6 /* StationView.swift in Sources */,
@@ -320,6 +330,7 @@
 				B07E44A62A2700750050BFC6 /* AllMatrix.swift in Sources */,
 				B07E446D2A2529100050BFC6 /* Participators.swift in Sources */,
 				B07E446F2A2529180050BFC6 /* MapMatrix.swift in Sources */,
+				B05377B02A3188CB00F323A2 /* GameBackground.swift in Sources */,
 				B07E44B82A2861540050BFC6 /* TextView.swift in Sources */,
 				B07E44AA2A270AF00050BFC6 /* HoneyCombView.swift in Sources */,
 				B0B267BF2A2C28A9002B3E16 /* MapGenerator.swift in Sources */,
@@ -333,6 +344,7 @@
 				B07E449F2A26F6610050BFC6 /* StationType.swift in Sources */,
 				B07E449B2A26EB610050BFC6 /* ParticipatorType.swift in Sources */,
 				B07E44B42A284B570050BFC6 /* RegularButton.swift in Sources */,
+				B05377AE2A3181F700F323A2 /* PreGame.swift in Sources */,
 				B07E448D2A26E1280050BFC6 /* GameVM.swift in Sources */,
 				B07E44652A24738E0050BFC6 /* Protocols.swift in Sources */,
 				B07E44952A26E6D30050BFC6 /* Station.swift in Sources */,
