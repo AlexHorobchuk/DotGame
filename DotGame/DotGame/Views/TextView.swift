@@ -17,7 +17,7 @@ struct TextView: View {
         Text(text)
             .foregroundColor(.white)
             .font(.system(size: fontSize, weight: .bold))
-            .padding(10)
+            .padding(15)
             .background(
                 RoundedRectangle(cornerRadius: 15)
                     .fill(.red))

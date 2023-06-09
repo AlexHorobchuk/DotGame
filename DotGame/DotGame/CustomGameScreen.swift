@@ -14,6 +14,7 @@ struct CustomGameScreen: View {
     @State var animate = true
     @State var animateGreed = true
     @State var timer: Timer?
+    @State var showingSettings = false
     
     var body: some View {
         
@@ -72,6 +73,21 @@ struct CustomGameScreen: View {
         }
         .onDisappear {
             timer?.invalidate()
+        }
+        
+        .fullScreenCover(isPresented: $showingSettings) {
+            SettingsView(isShowingSettings: $showingSettings)
+                .clearModalBackground()
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    showingSettings = true
+                }) {
+                    SettingsButton()
+                }
+                
+            }
         }
     }
 }

@@ -5,7 +5,7 @@
 //  Created by Olha Dzhyhirei on 5/30/23.
 //
 
-import Foundation
+import SwiftUI
 
 final class GameVM: ObservableObject {
     
@@ -13,7 +13,8 @@ final class GameVM: ObservableObject {
     @Published var stationColorData: [Int: Int] = [:]
     @Published var participators: [Participator]
     @Published var gameState = GameState.preStart
-    @Published var didWin: Bool?
+    @Published var didWin = false
+    var checkBalls: (() -> Set<ParticipatorType>)?
     
     var matrix: [[Int]]
     
@@ -43,6 +44,34 @@ final class GameVM: ObservableObject {
     func stationTapped(station: Station) {
         if let player = getPlayer() {
             player.stationTapped(station: station)
+        }
+    }
+    
+    func isGameOver() {
+        var owners: Set<ParticipatorType> = []
+        for stationArray in map.compactMap({ $0 }) {
+            for station in stationArray {
+                guard let owner = station.owner else { continue }
+                owners.insert(owner)
+            }
+        }
+        guard owners.contains(.realPlayer) else {
+            return DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                withAnimation(.easeInOut(duration: 1)) {
+                    self.gameState = .end
+                }
+            }
+        }
+        
+        if owners.count == 1 {
+            let balls = checkBalls?()
+            guard balls?.filter( {$0 != .realPlayer} ).count == 0 else { return }
+            didWin = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                withAnimation(.easeInOut(duration: 1)) {
+                    self.gameState = .end
+                }
+            }
         }
     }
     
@@ -133,6 +162,7 @@ final class GameVM: ObservableObject {
         updateMap()
         getColor()
         setSelectedStations()
+        isGameOver()
         botsAttack()
     }
     

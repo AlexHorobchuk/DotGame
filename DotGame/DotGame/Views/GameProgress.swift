@@ -15,7 +15,7 @@ struct GameProgress: View {
         let totalAmount = stationColorData.values.reduce(0, +)
         let ratio = 250.0 / CGFloat(totalAmount)
         
-        HStack(spacing: 3) {
+        HStack(spacing: 2) {
             ForEach(2..<9) { participator in
                 if let amount = stationColorData[participator] {
                     if amount > 0 {

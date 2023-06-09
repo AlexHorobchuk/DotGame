@@ -6,25 +6,6 @@
 //
 
 import SpriteKit
-
-class HexagonNode: SKShapeNode {
-    var station: Station
-    
-    init(station: Station) {
-        self.station = station
-        let hexagonPath = Hexagon(radius: 10).path(in: CGRect(x: 0, y: 0, width: 73, height: 72))
-        super.init()
-        
-        self.path = hexagonPath.cgPath
-        self.fillColor = .clear
-        self.strokeColor = .clear
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
     
 final class GameScene: SKScene {
     
@@ -50,9 +31,11 @@ final class GameScene: SKScene {
         makeCoordinatefromMatrix()
         viewModel.setParticipators()
         createAllHexagons()
+        viewModel.checkBalls = { [weak self] in
+            self?.nodesBallsPresent() ?? []
+        }
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
         view.addGestureRecognizer(panGesture)
-        print(stationCoordinates.values)
     }
     
     @objc func handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
@@ -60,7 +43,6 @@ final class GameScene: SKScene {
         let locationInScene = convertPoint(fromView: location)
             switch recognizer.state {
             case .began:
-                print(location)
                 guard let station = findStationWithLocation(location: locationInScene) else { return }
                 viewModel.stationTapped(station: station)
                 
@@ -71,10 +53,19 @@ final class GameScene: SKScene {
                 break
             }
         }
+    
+    func nodesBallsPresent() -> Set<ParticipatorType> {
+        var owners: Set<ParticipatorType> = []
+        for node in self.children {
+            if let ballNode = node as? BallNode {
+                owners.insert(ballNode.owner)
+            }
+        }
+        return owners
+    }
 
     func findStationWithLocation(location: CGPoint) -> Station? {
         let nodes = self.nodes(at: location)
-        print(nodes)
         for node in nodes {
             if let hexagonNode = node as? HexagonNode {
                 return hexagonNode.station
@@ -98,14 +89,8 @@ final class GameScene: SKScene {
     }
     
     func createBall(at point: CGPoint, owner: ParticipatorType, radius: CGFloat = 6) -> SKShapeNode {
-        let ballNode = SKShapeNode(circleOfRadius: radius)
-        ballNode.fillColor = SKColor(owner.getParticipatorColor())
+        let ballNode = BallNode(owner: owner, radius: radius)
         ballNode.position = point
-        
-        ballNode.physicsBody = SKPhysicsBody(circleOfRadius: radius)
-        ballNode.physicsBody?.categoryBitMask = owner.getMyBitMask()
-        ballNode.physicsBody?.contactTestBitMask = owner.getEnemysBitsMask()
-        ballNode.physicsBody?.affectedByGravity = false
         
         self.addChild(ballNode)
         return ballNode

@@ -17,12 +17,6 @@ struct GameMapView: View {
                 HStack(spacing: 4) {
                     ForEach(game.map[row]) { station in
                         HoneyCombView(station: station)
-                            .overlay(
-                                Hexagon(radius: 10)
-                                    .stroke(Color.red,
-                                            lineWidth: game.isSelected(station: station) && station.owner == .realPlayer ? 2 : 0)
-                                    .frame(width: 72, height: 72)
-                            )
                             .clipShape(Hexagon(radius: 10))
                     }
                 }

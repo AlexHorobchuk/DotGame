@@ -12,7 +12,6 @@ class Station: Identifiable, ObservableObject {
     @Published var type: StationType
     @Published var owner: ParticipatorType?
     @Published var ballsAmount: Int
-    
     var position: Coordinate
     var id = UUID()
     

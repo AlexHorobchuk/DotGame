@@ -11,6 +11,7 @@ import SpriteKit
 extension GameScene: MoverService {
     
     func move(from stationA: Station, to stationB: Station, by participator: Participator) {
+        guard stationA.id != stationB.id else { return }
         guard let station = viewModel.getStationByCoordinates(coordinates: stationA.position) else { return }
         
         if station.owner == participator.type && station.ballsAmount > 0 {
@@ -23,6 +24,32 @@ extension GameScene: MoverService {
             let repeatAction = SKAction.run { self.move(from: stationA, to: stationB, by: participator) }
             self.run(.sequence([sendAction, .wait(forDuration: 0.25), repeatAction]))
         }
+    }
+}
+
+struct ClearBackgroundView: UIViewRepresentable {
+    func makeUIView(context: Context) -> some UIView {
+        let view = UIView()
+        DispatchQueue.main.async {
+            view.superview?.superview?.backgroundColor = .clear
+        }
+        return view
+    }
+    func updateUIView(_ uiView: UIViewType, context: Context) {
+    }
+}
+
+struct ClearBackgroundViewModifier: ViewModifier {
+    
+    func body(content: Content) -> some View {
+        content
+            .background(ClearBackgroundView())
+    }
+}
+
+extension View {
+    func clearModalBackground() -> some View {
+        self.modifier(ClearBackgroundViewModifier())
     }
 }
 

@@ -12,6 +12,7 @@ struct GameScreen: View {
     @StateObject var game : GameVM
     
     @State var timer: Timer?
+    @State var showingSettings = false
     
     var body: some View {
         
@@ -20,8 +21,11 @@ struct GameScreen: View {
                 PreGame()
                     .ignoresSafeArea()
                     .onTapGesture {
-                        game.gameState = .start
+                        withAnimation(.easeInOut(duration: 1)) {
+                            game.gameState = .start
+                        }
                     }
+                    .transition(.opacity)
             }
             
             if game.gameState == .start {
@@ -58,6 +62,26 @@ struct GameScreen: View {
                 .onDisappear {
                     timer?.invalidate()
                 }
+                .transition(.opacity)
+            }
+            
+            if game.gameState == .end {
+                GameOver(didWin: game.didWin)
+                    .transition(.opacity)
+            }
+        }
+        .fullScreenCover(isPresented: $showingSettings) {
+            SettingsView(isShowingSettings: $showingSettings)
+                .clearModalBackground()
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    showingSettings = true
+                }) {
+                    SettingsButton()
+                }
+                
             }
         }
     }

@@ -10,6 +10,12 @@
 		B05377AC2A3181DC00F323A2 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377AB2A3181DC00F323A2 /* GameOver.swift */; };
 		B05377AE2A3181F700F323A2 /* PreGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377AD2A3181F700F323A2 /* PreGame.swift */; };
 		B05377B02A3188CB00F323A2 /* GameBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377AF2A3188CB00F323A2 /* GameBackground.swift */; };
+		B05377B22A32CF6E00F323A2 /* HexagonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377B12A32CF6E00F323A2 /* HexagonNode.swift */; };
+		B05377B42A32CF9A00F323A2 /* BallNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377B32A32CF9A00F323A2 /* BallNode.swift */; };
+		B05377B62A32EAD800F323A2 /* Scaled Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377B52A32EAD800F323A2 /* Scaled Image.swift */; };
+		B05377B82A32F59000F323A2 /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377B72A32F59000F323A2 /* SettingsButton.swift */; };
+		B05377BA2A32F88500F323A2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377B92A32F88500F323A2 /* SettingsView.swift */; };
+		B05377BC2A32FA6D00F323A2 /* ManagerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377BB2A32FA6C00F323A2 /* ManagerButton.swift */; };
 		B07E44552A24708D0050BFC6 /* DotGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44542A24708D0050BFC6 /* DotGameApp.swift */; };
 		B07E44572A24708D0050BFC6 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44562A24708D0050BFC6 /* GameScreen.swift */; };
 		B07E44592A24708F0050BFC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B07E44582A24708F0050BFC6 /* Assets.xcassets */; };
@@ -51,6 +57,12 @@
 		B05377AB2A3181DC00F323A2 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		B05377AD2A3181F700F323A2 /* PreGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreGame.swift; sourceTree = "<group>"; };
 		B05377AF2A3188CB00F323A2 /* GameBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBackground.swift; sourceTree = "<group>"; };
+		B05377B12A32CF6E00F323A2 /* HexagonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonNode.swift; sourceTree = "<group>"; };
+		B05377B32A32CF9A00F323A2 /* BallNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallNode.swift; sourceTree = "<group>"; };
+		B05377B52A32EAD800F323A2 /* Scaled Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scaled Image.swift"; sourceTree = "<group>"; };
+		B05377B72A32F59000F323A2 /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
+		B05377B92A32F88500F323A2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B05377BB2A32FA6C00F323A2 /* ManagerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerButton.swift; sourceTree = "<group>"; };
 		B07E44512A24708D0050BFC6 /* DotGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DotGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B07E44542A24708D0050BFC6 /* DotGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotGameApp.swift; sourceTree = "<group>"; };
 		B07E44562A24708D0050BFC6 /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
@@ -162,6 +174,8 @@
 			children = (
 				B07E44732A252DA10050BFC6 /* GameScene.swift */,
 				B07E44762A253F810050BFC6 /* Coordinator.swift */,
+				B05377B12A32CF6E00F323A2 /* HexagonNode.swift */,
+				B05377B32A32CF9A00F323A2 /* BallNode.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -173,7 +187,9 @@
 				B07E447E2A26CD270050BFC6 /* StationView.swift */,
 				B07E447C2A26CC330050BFC6 /* Hexagon.swift */,
 				B07E44A92A270AF00050BFC6 /* HoneyCombView.swift */,
+				B05377B72A32F59000F323A2 /* SettingsButton.swift */,
 				B07E44AF2A2821D80050BFC6 /* BackgroundView.swift */,
+				B05377B92A32F88500F323A2 /* SettingsView.swift */,
 				B07E44B72A2861540050BFC6 /* TextView.swift */,
 				B0B267B62A2B074D002B3E16 /* GameProgress.swift */,
 				B07E44B92A2870B40050BFC6 /* MapView.swift */,
@@ -182,6 +198,7 @@
 				B05377AB2A3181DC00F323A2 /* GameOver.swift */,
 				B05377AF2A3188CB00F323A2 /* GameBackground.swift */,
 				B05377AD2A3181F700F323A2 /* PreGame.swift */,
+				B05377B52A32EAD800F323A2 /* Scaled Image.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -231,6 +248,7 @@
 			children = (
 				B07E44B32A284B570050BFC6 /* RegularButton.swift */,
 				B07E44BD2A2994A90050BFC6 /* MapButton.swift */,
+				B05377BB2A32FA6C00F323A2 /* ManagerButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -318,19 +336,24 @@
 				B07E44B22A2846E00050BFC6 /* StartScreen.swift in Sources */,
 				B07E44B62A284CF90050BFC6 /* CustomGameScreen.swift in Sources */,
 				B07E44772A253F810050BFC6 /* Coordinator.swift in Sources */,
+				B05377BA2A32F88500F323A2 /* SettingsView.swift in Sources */,
 				B07E44572A24708D0050BFC6 /* GameScreen.swift in Sources */,
+				B05377B22A32CF6E00F323A2 /* HexagonNode.swift in Sources */,
 				B07E44552A24708D0050BFC6 /* DotGameApp.swift in Sources */,
 				B0B267C12A2C3DDF002B3E16 /* Coordinates.swift in Sources */,
 				B07E44792A25410F0050BFC6 /* Extensions.swift in Sources */,
 				B05377AC2A3181DC00F323A2 /* GameOver.swift in Sources */,
 				B07E448F2A26E5CE0050BFC6 /* GameSetterVM.swift in Sources */,
+				B05377B42A32CF9A00F323A2 /* BallNode.swift in Sources */,
 				B07E44852A26DDE90050BFC6 /* Player.swift in Sources */,
 				B07E447F2A26CD270050BFC6 /* StationView.swift in Sources */,
 				B07E44B02A2821D80050BFC6 /* BackgroundView.swift in Sources */,
 				B07E44A62A2700750050BFC6 /* AllMatrix.swift in Sources */,
+				B05377B62A32EAD800F323A2 /* Scaled Image.swift in Sources */,
 				B07E446D2A2529100050BFC6 /* Participators.swift in Sources */,
 				B07E446F2A2529180050BFC6 /* MapMatrix.swift in Sources */,
 				B05377B02A3188CB00F323A2 /* GameBackground.swift in Sources */,
+				B05377BC2A32FA6D00F323A2 /* ManagerButton.swift in Sources */,
 				B07E44B82A2861540050BFC6 /* TextView.swift in Sources */,
 				B07E44AA2A270AF00050BFC6 /* HoneyCombView.swift in Sources */,
 				B0B267BF2A2C28A9002B3E16 /* MapGenerator.swift in Sources */,
@@ -344,6 +367,7 @@
 				B07E449F2A26F6610050BFC6 /* StationType.swift in Sources */,
 				B07E449B2A26EB610050BFC6 /* ParticipatorType.swift in Sources */,
 				B07E44B42A284B570050BFC6 /* RegularButton.swift in Sources */,
+				B05377B82A32F59000F323A2 /* SettingsButton.swift in Sources */,
 				B05377AE2A3181F700F323A2 /* PreGame.swift in Sources */,
 				B07E448D2A26E1280050BFC6 /* GameVM.swift in Sources */,
 				B07E44652A24738E0050BFC6 /* Protocols.swift in Sources */,

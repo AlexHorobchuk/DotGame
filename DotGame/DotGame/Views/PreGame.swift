@@ -10,6 +10,8 @@ import SwiftUI
 struct PreGame: View {
     
     @State var animate = true
+    @State var animateGreed = true
+    @State var timer: Timer?
     
     let station = Station(type: .active,
                           owner: .realPlayer ,
@@ -17,8 +19,10 @@ struct PreGame: View {
                           ballsAmount: 10)
     
     var body: some View {
+        
         ZStack {
-            GameBackground()
+            BackgroundView(animation: $animateGreed)
+                .animation(.easeInOut(duration: 3))
             
             VStack {
                 Text(" Your station is: ")
@@ -37,16 +41,8 @@ struct PreGame: View {
                 }
                 .padding()
                 
-                Text("Tap to Continue")
-                    .foregroundColor(.red)
-                    .font(.system(size: 24, weight: .semibold))
-                    .minimumScaleFactor(0.5)
-                    .lineLimit(nil)
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(Color.blue.opacity(0.5)))
-                    .scaleEffect(animate ? 1 : 0.9)
+                RegularButton(animate: $animate, text: "Tap to Continue")
+                    .scaleEffect(animate ? 0.8 : 1)
                 
             }
             .frame(width: 300, height: 500)
@@ -56,12 +52,20 @@ struct PreGame: View {
             .overlay(RoundedRectangle(cornerRadius: 20)
                 .stroke(Color.red, lineWidth: 4))
         }
-        .onAppear{
+        .onAppear {
             DispatchQueue.main.async {
-                withAnimation(.easeInOut(duration: 1).repeatForever()) {
+                withAnimation(.easeInOut(duration: 2.0).repeatForever()) {
                     animate.toggle()
                 }
             }
+            self.timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
+                DispatchQueue.main.async {
+                        animateGreed.toggle()
+                }
+            }
+        }
+        .onDisappear {
+            timer?.invalidate()
         }
     }
 }

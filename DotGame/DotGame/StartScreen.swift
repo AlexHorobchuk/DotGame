@@ -16,6 +16,7 @@ struct StartScreen: View {
     @State var animate = true
     @State var animateGreed = true
     @State var timer: Timer?
+    @State var showingSettings = false
     
     var body: some View {
         
@@ -36,11 +37,15 @@ struct StartScreen: View {
                                     CustomGameScreen(gameSetter: gameSetter)) {
                         RegularButton(animate: $animate, text: "CUSTOM GAME")
                     }
+                    
+                    Link(destination: URL(string: "https://www.apple.com")!) {
+                        RegularButton(animate: $animate, text: "PRIVACY POLICY")
+                    }
                 }
             }
             .onAppear {
                 DispatchQueue.main.async {
-                    withAnimation(.easeInOut(duration: 2.5).repeatForever()) {
+                    withAnimation(.easeInOut(duration: 2).repeatForever()) {
                         animate.toggle()
                     }
                 }
@@ -53,6 +58,20 @@ struct StartScreen: View {
             }
             .onDisappear {
                 timer?.invalidate()
+            }
+            .fullScreenCover(isPresented: $showingSettings) {
+                SettingsView(isShowingSettings: $showingSettings)
+                    .clearModalBackground()
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        showingSettings = true
+                    }) {
+                        SettingsButton()
+                    }
+                    
+                }
             }
         }
         .accentColor(.red)

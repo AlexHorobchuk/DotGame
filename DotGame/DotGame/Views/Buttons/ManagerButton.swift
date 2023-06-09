@@ -1,13 +1,13 @@
 //
-//  RegularButton.swift
+//  SettingsButton.swift
 //  DotGame
 //
-//  Created by Olha Dzhyhirei on 5/31/23.
+//  Created by Olha Dzhyhirei on 6/8/23.
 //
 
 import SwiftUI
 
-struct RegularButton: View {
+struct ManagerButton: View {
     
     @Binding var animate: Bool
     
@@ -32,12 +32,12 @@ struct RegularButton: View {
                 .foregroundColor(.white)
                 .font(.system(size: 22, weight: .bold))
         }
-        .frame(width: 220, height: 55)
+        .frame(width: 80, height: 55)
     }
 }
 
-struct RegularButton_Previews: PreviewProvider {
+struct SettingsButton_Previews: PreviewProvider {
     static var previews: some View {
-        RegularButton(animate: .constant(true), text: "Hello")
+        ManagerButton(animate: .constant(true), text: "OFF")
     }
 }
