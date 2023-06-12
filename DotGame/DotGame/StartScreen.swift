@@ -32,18 +32,29 @@ struct StartScreen: View {
                                                 GameVM(gameInfo: gameSetter.getGameInfo(for: .random)))) {
                         RegularButton(animate: $animate, text: "START GAME")
                     }
+                                                .simultaneousGesture(TapGesture().onEnded {
+                                                    SoundManager.shared.playSound(for: .click)
+                                                })
                     
                     NavigationLink(destination:
                                     CustomGameScreen(gameSetter: gameSetter)) {
                         RegularButton(animate: $animate, text: "CUSTOM GAME")
                     }
+                                    .simultaneousGesture(TapGesture().onEnded {
+                                        SoundManager.shared.playSound(for: .click)
+                                    })
                     
                     Link(destination: URL(string: "https://www.apple.com")!) {
                         RegularButton(animate: $animate, text: "PRIVACY POLICY")
+                            .simultaneousGesture(TapGesture().onEnded {
+                                SoundManager.shared.playSound(for: .click)
+                            })
                     }
                 }
             }
             .onAppear {
+                MusicManager.shared.playBackgroundMusic()
+                
                 DispatchQueue.main.async {
                     withAnimation(.easeInOut(duration: 2).repeatForever()) {
                         animate.toggle()
@@ -66,6 +77,7 @@ struct StartScreen: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
+                        SoundManager.shared.playSound(for: .click)
                         showingSettings = true
                     }) {
                         SettingsButton()

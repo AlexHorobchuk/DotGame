@@ -31,7 +31,10 @@ struct CustomGameScreen: View {
                 
                 ScrollView {
                     ForEach(gameSetter.matrixs) { matrix in
-                        Button(action: { gameSetter.selectMatrix(matrix) } ,
+                        Button(action: {
+                            gameSetter.selectMatrix(matrix)
+                            SoundManager.shared.playSound(for: .click)
+                        } ,
                                label: {
                             MapButton(
                                       isSelected: matrix.id == gameSetter.selectedMatrix.id,
@@ -52,6 +55,9 @@ struct CustomGameScreen: View {
                     RegularButton(animate: $animate,
                                   text: "START")
                     .scaleEffect(animate ? 0.8 : 1)
+                })
+                .simultaneousGesture(TapGesture().onEnded {
+                    SoundManager.shared.playSound(for: .click)
                 })
                 .padding()
                 
@@ -82,6 +88,7 @@ struct CustomGameScreen: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
+                    SoundManager.shared.playSound(for: .click)
                     showingSettings = true
                 }) {
                     SettingsButton()

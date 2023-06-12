@@ -60,6 +60,7 @@ extension GameScene: SKPhysicsContactDelegate {
         guard let bodyB = contact.bodyB.node as? SKShapeNode else { return }
         bodyA.removeFromParent()
         bodyB.removeFromParent()
+        SoundManager.shared.playSound(for: .hitStation)
     }
 }
 

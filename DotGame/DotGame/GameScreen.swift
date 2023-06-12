@@ -9,6 +9,8 @@ import SwiftUI
 
 struct GameScreen: View {
     
+    @Environment(\.presentationMode) var presentationMode
+    
     @StateObject var game : GameVM
     
     @State var timer: Timer?
@@ -21,6 +23,7 @@ struct GameScreen: View {
                 PreGame()
                     .ignoresSafeArea()
                     .onTapGesture {
+                        SoundManager.shared.playSound(for: .click)
                         withAnimation(.easeInOut(duration: 1)) {
                             game.gameState = .start
                         }
@@ -67,6 +70,10 @@ struct GameScreen: View {
             
             if game.gameState == .end {
                 GameOver(didWin: game.didWin)
+                    .onTapGesture {
+                        SoundManager.shared.playSound(for: .click)
+                        presentationMode.wrappedValue.dismiss()
+                    }
                     .transition(.opacity)
             }
         }
@@ -77,6 +84,7 @@ struct GameScreen: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
+                    SoundManager.shared.playSound(for: .click)
                     showingSettings = true
                 }) {
                     SettingsButton()

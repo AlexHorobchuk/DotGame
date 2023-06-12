@@ -5,4 +5,19 @@
 //  Created by Olha Dzhyhirei on 6/11/23.
 //
 
-import Foundation
+import UIKit
+
+class VibrationManager {
+    
+    static let shared = VibrationManager()
+    
+    private init() {}
+    
+    func vibrate(for style: UIImpactFeedbackGenerator.FeedbackStyle) {
+        if UserDefaultsManager.shared.isVibrationEnabled {
+            let generator = UIImpactFeedbackGenerator(style: style)
+            generator.prepare()
+            generator.impactOccurred()
+        }
+    }
+}

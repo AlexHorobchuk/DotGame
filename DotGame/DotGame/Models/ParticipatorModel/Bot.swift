@@ -18,10 +18,9 @@ final class BotPlayer: Participator {
     }
     
     func findStationToAttack(stations: [Station]) -> Station? {
-        guard let station = stations.filter({ $0.owner != self.type }) .sorted(by: {$0.ballsAmount < $1.ballsAmount}).first
+        guard let station = stations.filter({ $0.owner != self.type && $0.type == .active }).randomElement()
         else { return nil }
         return station
-        
     }
     
     func clearStation() {

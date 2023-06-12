@@ -45,6 +45,8 @@ struct GameOver: View {
                 .stroke(Color.red, lineWidth: 4))
         }
         .onAppear {
+            SoundManager.shared.playSound(for: didWin ? .won : .loose)
+            
             DispatchQueue.main.async {
                 withAnimation(.easeInOut(duration: 2.0).repeatForever()) {
                     animate.toggle()

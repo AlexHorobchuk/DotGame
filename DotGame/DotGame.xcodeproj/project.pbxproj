@@ -16,6 +16,15 @@
 		B05377B82A32F59000F323A2 /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377B72A32F59000F323A2 /* SettingsButton.swift */; };
 		B05377BA2A32F88500F323A2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377B92A32F88500F323A2 /* SettingsView.swift */; };
 		B05377BC2A32FA6D00F323A2 /* ManagerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377BB2A32FA6C00F323A2 /* ManagerButton.swift */; };
+		B05377BE2A36AA1F00F323A2 /* MusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377BD2A36AA1F00F323A2 /* MusicManager.swift */; };
+		B05377C02A36AA2E00F323A2 /* VibrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377BF2A36AA2E00F323A2 /* VibrationManager.swift */; };
+		B05377C22A36AA3900F323A2 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377C12A36AA3900F323A2 /* SoundManager.swift */; };
+		B05377C42A36AB3300F323A2 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377C32A36AB3300F323A2 /* UserDefaultsManager.swift */; };
+		B05377C72A36AD1800F323A2 /* DotMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B05377C62A36AD1800F323A2 /* DotMusic.mp3 */; };
+		B05377C92A36B31800F323A2 /* Click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B05377C82A36B31800F323A2 /* Click.mp3 */; };
+		B05377CD2A36BC0400F323A2 /* Defeat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B05377CC2A36BC0400F323A2 /* Defeat.mp3 */; };
+		B05377CF2A36BC0900F323A2 /* Win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B05377CE2A36BC0900F323A2 /* Win.mp3 */; };
+		B05377D12A36E56E00F323A2 /* Pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B05377D02A36E56E00F323A2 /* Pop.mp3 */; };
 		B07E44552A24708D0050BFC6 /* DotGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44542A24708D0050BFC6 /* DotGameApp.swift */; };
 		B07E44572A24708D0050BFC6 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44562A24708D0050BFC6 /* GameScreen.swift */; };
 		B07E44592A24708F0050BFC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B07E44582A24708F0050BFC6 /* Assets.xcassets */; };
@@ -63,6 +72,15 @@
 		B05377B72A32F59000F323A2 /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
 		B05377B92A32F88500F323A2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B05377BB2A32FA6C00F323A2 /* ManagerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerButton.swift; sourceTree = "<group>"; };
+		B05377BD2A36AA1F00F323A2 /* MusicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicManager.swift; sourceTree = "<group>"; };
+		B05377BF2A36AA2E00F323A2 /* VibrationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrationManager.swift; sourceTree = "<group>"; };
+		B05377C12A36AA3900F323A2 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		B05377C32A36AB3300F323A2 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		B05377C62A36AD1800F323A2 /* DotMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = DotMusic.mp3; sourceTree = "<group>"; };
+		B05377C82A36B31800F323A2 /* Click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Click.mp3; sourceTree = "<group>"; };
+		B05377CC2A36BC0400F323A2 /* Defeat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Defeat.mp3; sourceTree = "<group>"; };
+		B05377CE2A36BC0900F323A2 /* Win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Win.mp3; sourceTree = "<group>"; };
+		B05377D02A36E56E00F323A2 /* Pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Pop.mp3; sourceTree = "<group>"; };
 		B07E44512A24708D0050BFC6 /* DotGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DotGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B07E44542A24708D0050BFC6 /* DotGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotGameApp.swift; sourceTree = "<group>"; };
 		B07E44562A24708D0050BFC6 /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
@@ -113,6 +131,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B05377C52A36ACF900F323A2 /* MusicAndSounds */ = {
+			isa = PBXGroup;
+			children = (
+				B05377CE2A36BC0900F323A2 /* Win.mp3 */,
+				B05377D02A36E56E00F323A2 /* Pop.mp3 */,
+				B05377CC2A36BC0400F323A2 /* Defeat.mp3 */,
+				B05377C82A36B31800F323A2 /* Click.mp3 */,
+				B05377C62A36AD1800F323A2 /* DotMusic.mp3 */,
+			);
+			path = MusicAndSounds;
+			sourceTree = "<group>";
+		};
 		B07E44482A24708D0050BFC6 = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +174,7 @@
 				B07E44782A25410F0050BFC6 /* Extensions.swift */,
 				B0B267AF2A29B5E4002B3E16 /* Managers */,
 				B07E44642A24738E0050BFC6 /* Protocols.swift */,
+				B05377C52A36ACF900F323A2 /* MusicAndSounds */,
 				B07E44992A26EB520050BFC6 /* Extras */,
 				B07E44582A24708F0050BFC6 /* Assets.xcassets */,
 				B07E445A2A24708F0050BFC6 /* Preview Content */,
@@ -257,6 +288,10 @@
 			isa = PBXGroup;
 			children = (
 				B07E44A52A2700750050BFC6 /* AllMatrix.swift */,
+				B05377BD2A36AA1F00F323A2 /* MusicManager.swift */,
+				B05377BF2A36AA2E00F323A2 /* VibrationManager.swift */,
+				B05377C12A36AA3900F323A2 /* SoundManager.swift */,
+				B05377C32A36AB3300F323A2 /* UserDefaultsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -320,7 +355,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B07E445C2A24708F0050BFC6 /* Preview Assets.xcassets in Resources */,
+				B05377D12A36E56E00F323A2 /* Pop.mp3 in Resources */,
+				B05377C92A36B31800F323A2 /* Click.mp3 in Resources */,
+				B05377CD2A36BC0400F323A2 /* Defeat.mp3 in Resources */,
+				B05377CF2A36BC0900F323A2 /* Win.mp3 in Resources */,
 				B07E44592A24708F0050BFC6 /* Assets.xcassets in Resources */,
+				B05377C72A36AD1800F323A2 /* DotMusic.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +385,7 @@
 				B05377AC2A3181DC00F323A2 /* GameOver.swift in Sources */,
 				B07E448F2A26E5CE0050BFC6 /* GameSetterVM.swift in Sources */,
 				B05377B42A32CF9A00F323A2 /* BallNode.swift in Sources */,
+				B05377C42A36AB3300F323A2 /* UserDefaultsManager.swift in Sources */,
 				B07E44852A26DDE90050BFC6 /* Player.swift in Sources */,
 				B07E447F2A26CD270050BFC6 /* StationView.swift in Sources */,
 				B07E44B02A2821D80050BFC6 /* BackgroundView.swift in Sources */,
@@ -361,6 +402,7 @@
 				B0B267B72A2B074D002B3E16 /* GameProgress.swift in Sources */,
 				B07E44872A26DDF20050BFC6 /* Bot.swift in Sources */,
 				B07E44BA2A2870B40050BFC6 /* MapView.swift in Sources */,
+				B05377C02A36AA2E00F323A2 /* VibrationManager.swift in Sources */,
 				B07E44742A252DA10050BFC6 /* GameScene.swift in Sources */,
 				B07E44BC2A2993D90050BFC6 /* MapSample.swift in Sources */,
 				B0B267BD2A2C2832002B3E16 /* GameType.swift in Sources */,
@@ -368,11 +410,13 @@
 				B07E449B2A26EB610050BFC6 /* ParticipatorType.swift in Sources */,
 				B07E44B42A284B570050BFC6 /* RegularButton.swift in Sources */,
 				B05377B82A32F59000F323A2 /* SettingsButton.swift in Sources */,
+				B05377BE2A36AA1F00F323A2 /* MusicManager.swift in Sources */,
 				B05377AE2A3181F700F323A2 /* PreGame.swift in Sources */,
 				B07E448D2A26E1280050BFC6 /* GameVM.swift in Sources */,
 				B07E44652A24738E0050BFC6 /* Protocols.swift in Sources */,
 				B07E44952A26E6D30050BFC6 /* Station.swift in Sources */,
 				B0B267C32A2DD8D1002B3E16 /* GameMapView.swift in Sources */,
+				B05377C22A36AA3900F323A2 /* SoundManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
