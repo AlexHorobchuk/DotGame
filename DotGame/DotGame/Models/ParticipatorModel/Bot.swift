@@ -14,7 +14,7 @@ final class BotPlayer: Participator {
     }
     
     private func makeDecision() -> Bool {
-        return [true, false, false, false].randomElement()!
+        return [true, false, false].randomElement()!
     }
     
     func findStationToAttack(stations: [Station]) -> Station? {
@@ -41,11 +41,13 @@ final class BotPlayer: Participator {
     
     func getAttackingStations(enemysBalls: Int) -> [Station] {
         let myStations = getSortedStation()
+        var atackingStations = [Station]()
         var total = 0
         for station in myStations {
             total += station.ballsAmount
+            atackingStations.append(station)
             if total > enemysBalls {
-                return myStations
+                return atackingStations
             }
         }
         return myStations

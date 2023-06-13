@@ -13,6 +13,10 @@ struct PreGame: View {
     @State var animateGreed = true
     @State var timer: Timer?
     
+    @Namespace var namespace
+    
+    @Binding var gameState: GameState
+    
     let station = Station(type: .active,
                           owner: .realPlayer ,
                           position: .init(x: 0, y: 0),
@@ -25,21 +29,44 @@ struct PreGame: View {
                 .animation(.easeInOut(duration: 3))
             
             VStack {
-                Text(" Your station is: ")
-                    .font(.system(size: 24, weight: .semibold))
-                
-                HoneyCombView(station: station)
-                    .scaleEffect(1.5)
-                    .padding(30)
-                
-                HStack {
-                    Image(systemName: "hand.tap.fill")
-                        .foregroundColor(.blue)
-                        .font(.system(size: 50))
-                        .offset(x: animate ? 30 : -20)
+                VStack {
+                    if gameState == .preStart {
+                        VStack {
+                            Text(" Your station is: ")
+                                .font(.system(size: 24, weight: .semibold))
+                            
+                            HoneyCombView(station: station)
+                                .scaleEffect(1.5)
+                                .padding(30)
+                            
+                            HStack {
+                                Image(systemName: "hand.tap.fill")
+                                    .foregroundColor(.blue)
+                                    .font(.system(size: 50))
+                                    .offset(x: animate ? 30 : -20)
+                                
+                            }
+                            .padding()
+                            
+                            Spacer()
+                        }
+                        .frame(height: 320)
+                        .transition(AnyTransition.opacity.combined(with: .slide))
+                        .onAppear {
+                            DispatchQueue.main.async {
+                                withAnimation(.easeInOut(duration: 2.0).repeatForever()) {
+                                    animate.toggle()
+                                }
+                            }
+                        }
+                        
+                    }
                     
+                    if gameState == .rules {
+                        RulesView()
+                            .transition(AnyTransition.opacity.combined(with: .scale))
+                    }
                 }
-                .padding()
                 
                 RegularButton(animate: $animate, text: "Tap to Continue")
                     .scaleEffect(animate ? 0.8 : 1)
@@ -52,12 +79,8 @@ struct PreGame: View {
             .overlay(RoundedRectangle(cornerRadius: 20)
                 .stroke(Color.red, lineWidth: 4))
         }
+        .ignoresSafeArea()
         .onAppear {
-            DispatchQueue.main.async {
-                withAnimation(.easeInOut(duration: 2.0).repeatForever()) {
-                    animate.toggle()
-                }
-            }
             self.timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
                 DispatchQueue.main.async {
                         animateGreed.toggle()
@@ -72,6 +95,6 @@ struct PreGame: View {
 
 struct PreGame_Previews: PreviewProvider {
     static var previews: some View {
-        PreGame()
+        PreGame(gameState: .constant(.rules))
     }
 }

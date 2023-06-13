@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CustomGameScreen: View {
     
+    @Environment(\.presentationMode) var presentationMode
+    
     @ObservedObject var gameSetter: GameSetterVM
     
     @State var animate = true
@@ -40,11 +42,11 @@ struct CustomGameScreen: View {
                                       isSelected: matrix.id == gameSetter.selectedMatrix.id,
                                       matrix: matrix)
                                .padding(5)
+                               .frame(maxWidth: UIScreen.main.bounds.width)
                         })
                     }
                 }
-                .frame(height: 270)
-                .frame(maxWidth: UIScreen.main.bounds.width)
+                .frame( maxHeight: UIScreen.main.bounds.height / 3.5)
                 
                 
                 NavigationLink(destination: {
@@ -61,7 +63,7 @@ struct CustomGameScreen: View {
                 })
                 .padding()
                 
-                Spacer()
+                Spacer(minLength: 25)
             }
         }
         .onAppear {
@@ -85,6 +87,7 @@ struct CustomGameScreen: View {
             SettingsView(isShowingSettings: $showingSettings)
                 .clearModalBackground()
         }
+        .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
@@ -93,7 +96,15 @@ struct CustomGameScreen: View {
                 }) {
                     SettingsButton()
                 }
-                
+            }
+            
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    SoundManager.shared.playSound(for: .click)
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    CloseScreenButton()
+                }
             }
         }
     }

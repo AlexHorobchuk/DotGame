@@ -147,9 +147,10 @@ final class GameScene: SKScene {
         let getToStation = SKAction.move(to: coordinatsB, duration: timeToFinish)
         let attackStation = SKAction.run { self.viewModel.stationAttacked(station: stationB, by: participator.type) }
         let removeBall = SKAction.run { ball.removeFromParent() }
-        let plupSound = SKAction.run { SoundManager.shared.playSound(for: .hitStation) }
+        let plupSound = SKAction.run { if stationA.owner == .realPlayer {
+            SoundManager.shared.playSound(for: .hitStation) }}
         let vibration = SKAction.run { if stationB.owner == .realPlayer || stationA.owner == .realPlayer {
-            VibrationManager.shared.vibrate(for: .light) } }
+            VibrationManager.shared.vibrate(for: .light) }}
         
         ball.run(.sequence([getToStart, getToStation, attackStation, plupSound, vibration,removeBall]))
         

@@ -25,6 +25,9 @@
 		B05377CD2A36BC0400F323A2 /* Defeat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B05377CC2A36BC0400F323A2 /* Defeat.mp3 */; };
 		B05377CF2A36BC0900F323A2 /* Win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B05377CE2A36BC0900F323A2 /* Win.mp3 */; };
 		B05377D12A36E56E00F323A2 /* Pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B05377D02A36E56E00F323A2 /* Pop.mp3 */; };
+		B05377D52A37F7FA00F323A2 /* CloseScreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377D42A37F7FA00F323A2 /* CloseScreenButton.swift */; };
+		B05377D72A37FA6100F323A2 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377D62A37FA6100F323A2 /* Alert.swift */; };
+		B05377DB2A380A9C00F323A2 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377DA2A380A9C00F323A2 /* RulesView.swift */; };
 		B07E44552A24708D0050BFC6 /* DotGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44542A24708D0050BFC6 /* DotGameApp.swift */; };
 		B07E44572A24708D0050BFC6 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44562A24708D0050BFC6 /* GameScreen.swift */; };
 		B07E44592A24708F0050BFC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B07E44582A24708F0050BFC6 /* Assets.xcassets */; };
@@ -81,6 +84,9 @@
 		B05377CC2A36BC0400F323A2 /* Defeat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Defeat.mp3; sourceTree = "<group>"; };
 		B05377CE2A36BC0900F323A2 /* Win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Win.mp3; sourceTree = "<group>"; };
 		B05377D02A36E56E00F323A2 /* Pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Pop.mp3; sourceTree = "<group>"; };
+		B05377D42A37F7FA00F323A2 /* CloseScreenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseScreenButton.swift; sourceTree = "<group>"; };
+		B05377D62A37FA6100F323A2 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		B05377DA2A380A9C00F323A2 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
 		B07E44512A24708D0050BFC6 /* DotGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DotGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B07E44542A24708D0050BFC6 /* DotGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotGameApp.swift; sourceTree = "<group>"; };
 		B07E44562A24708D0050BFC6 /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
@@ -218,7 +224,6 @@
 				B07E447E2A26CD270050BFC6 /* StationView.swift */,
 				B07E447C2A26CC330050BFC6 /* Hexagon.swift */,
 				B07E44A92A270AF00050BFC6 /* HoneyCombView.swift */,
-				B05377B72A32F59000F323A2 /* SettingsButton.swift */,
 				B07E44AF2A2821D80050BFC6 /* BackgroundView.swift */,
 				B05377B92A32F88500F323A2 /* SettingsView.swift */,
 				B07E44B72A2861540050BFC6 /* TextView.swift */,
@@ -230,6 +235,7 @@
 				B05377AF2A3188CB00F323A2 /* GameBackground.swift */,
 				B05377AD2A3181F700F323A2 /* PreGame.swift */,
 				B05377B52A32EAD800F323A2 /* Scaled Image.swift */,
+				B05377DA2A380A9C00F323A2 /* RulesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -270,6 +276,7 @@
 				B07E449A2A26EB610050BFC6 /* ParticipatorType.swift */,
 				B07E449E2A26F6600050BFC6 /* StationType.swift */,
 				B0B267BC2A2C2832002B3E16 /* GameType.swift */,
+				B05377D62A37FA6100F323A2 /* Alert.swift */,
 			);
 			path = Extras;
 			sourceTree = "<group>";
@@ -277,9 +284,11 @@
 		B07E44BF2A2994AE0050BFC6 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				B05377B72A32F59000F323A2 /* SettingsButton.swift */,
 				B07E44B32A284B570050BFC6 /* RegularButton.swift */,
 				B07E44BD2A2994A90050BFC6 /* MapButton.swift */,
 				B05377BB2A32FA6C00F323A2 /* ManagerButton.swift */,
+				B05377D42A37F7FA00F323A2 /* CloseScreenButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -378,6 +387,7 @@
 				B07E44772A253F810050BFC6 /* Coordinator.swift in Sources */,
 				B05377BA2A32F88500F323A2 /* SettingsView.swift in Sources */,
 				B07E44572A24708D0050BFC6 /* GameScreen.swift in Sources */,
+				B05377DB2A380A9C00F323A2 /* RulesView.swift in Sources */,
 				B05377B22A32CF6E00F323A2 /* HexagonNode.swift in Sources */,
 				B07E44552A24708D0050BFC6 /* DotGameApp.swift in Sources */,
 				B0B267C12A2C3DDF002B3E16 /* Coordinates.swift in Sources */,
@@ -386,6 +396,7 @@
 				B07E448F2A26E5CE0050BFC6 /* GameSetterVM.swift in Sources */,
 				B05377B42A32CF9A00F323A2 /* BallNode.swift in Sources */,
 				B05377C42A36AB3300F323A2 /* UserDefaultsManager.swift in Sources */,
+				B05377D52A37F7FA00F323A2 /* CloseScreenButton.swift in Sources */,
 				B07E44852A26DDE90050BFC6 /* Player.swift in Sources */,
 				B07E447F2A26CD270050BFC6 /* StationView.swift in Sources */,
 				B07E44B02A2821D80050BFC6 /* BackgroundView.swift in Sources */,
@@ -400,6 +411,7 @@
 				B0B267BF2A2C28A9002B3E16 /* MapGenerator.swift in Sources */,
 				B0B267B32A29E62B002B3E16 /* GameInfo.swift in Sources */,
 				B0B267B72A2B074D002B3E16 /* GameProgress.swift in Sources */,
+				B05377D72A37FA6100F323A2 /* Alert.swift in Sources */,
 				B07E44872A26DDF20050BFC6 /* Bot.swift in Sources */,
 				B07E44BA2A2870B40050BFC6 /* MapView.swift in Sources */,
 				B05377C02A36AA2E00F323A2 /* VibrationManager.swift in Sources */,

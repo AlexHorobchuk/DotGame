@@ -44,12 +44,15 @@ struct StartScreen: View {
                                         SoundManager.shared.playSound(for: .click)
                                     })
                     
-                    Link(destination: URL(string: "https://www.apple.com")!) {
-                        RegularButton(animate: $animate, text: "PRIVACY POLICY")
-                            .simultaneousGesture(TapGesture().onEnded {
-                                SoundManager.shared.playSound(for: .click)
-                            })
+                    Button(action: {
+                        SoundManager.shared.playSound(for: .click)
+                        showingSettings = true
+                    }) {
+                        RegularButton(animate: $animate, text: "SETTINGS")
                     }
+                    .simultaneousGesture(TapGesture().onEnded {
+                        SoundManager.shared.playSound(for: .click)
+                    })
                 }
             }
             .onAppear {
@@ -73,17 +76,6 @@ struct StartScreen: View {
             .fullScreenCover(isPresented: $showingSettings) {
                 SettingsView(isShowingSettings: $showingSettings)
                     .clearModalBackground()
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        SoundManager.shared.playSound(for: .click)
-                        showingSettings = true
-                    }) {
-                        SettingsButton()
-                    }
-                    
-                }
             }
         }
         .accentColor(.red)

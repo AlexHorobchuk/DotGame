@@ -12,5 +12,14 @@ enum GameType {
 }
 
 enum GameState {
-    case preStart, start, end
+    case preStart, rules , start, end
+    
+    var nextCase: GameState {
+        let allCases: [GameState] = [.rules, .preStart, .start, .end]
+        guard let currentIndex = allCases.firstIndex(of: self) else {
+            return self
+        }
+        let nextIndex = (currentIndex + 1)
+        return allCases[nextIndex]
+    }
 }

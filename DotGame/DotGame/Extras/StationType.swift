@@ -11,3 +11,7 @@ enum StationType {
     
     case active, empty
 }
+
+enum OwnerType {
+    case realPlayer, bot
+}

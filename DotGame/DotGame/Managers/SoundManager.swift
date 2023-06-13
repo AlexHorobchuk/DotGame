@@ -8,13 +8,14 @@
 import UIKit
 import AVFoundation
 
-class SoundManager {
+class SoundManager: NSObject, AVAudioPlayerDelegate {
     
     static let shared = SoundManager()
     
-    private init() {}
+    private override init() {}
     
-    var player: AVAudioPlayer?
+    private var player: AVAudioPlayer?
+    private var isSoundOn: Bool = false
     
     enum Sounds: String {
         case won = "Win",
@@ -24,15 +25,21 @@ class SoundManager {
     }
       
     func playSound(for name: Sounds) {
-        let isSoundOn = UserDefaultsManager.shared.isSoundEnabled
+        isSoundOn = UserDefaultsManager.shared.isSoundEnabled
+        
         if isSoundOn {
+            if player?.isPlaying == true {
+                return
+            }
+            
             if let url = Bundle.main.url(forResource: name.rawValue, withExtension: "mp3") {
                 do {
                     player = try AVAudioPlayer(contentsOf: url)
+                    player?.delegate = self
                     player?.numberOfLoops = 0
                     player?.play()
                 } catch {
-                    print("mussic error")
+                    print("music error")
                 }
             }
         } else {

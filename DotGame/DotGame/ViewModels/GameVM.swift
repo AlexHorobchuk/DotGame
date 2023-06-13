@@ -12,8 +12,10 @@ final class GameVM: ObservableObject {
     @Published var map: [[Station]]
     @Published var stationColorData: [Int: Int] = [:]
     @Published var participators: [Participator]
-    @Published var gameState = GameState.preStart
+    @Published var gameState = GameState.rules
     @Published var didWin = false
+    @Published var alert: AlertItem?
+    
     var checkBalls: (() -> Set<ParticipatorType>)?
     
     var matrix: [[Int]]
@@ -113,10 +115,17 @@ final class GameVM: ObservableObject {
         }
     }
     
-    func updateMap() {
+    func updateMap(for participator: OwnerType) {
         for i in map.indices {
             for j in map[i].indices {
-                map[i][j].updateStation()
+                let station = map[i][j]
+                if participator == .realPlayer {
+                    guard station.owner == .realPlayer else { continue }
+                    station.updateStation()
+                } else {
+                    guard station.owner != .realPlayer else { continue }
+                    station.updateStation()
+                }
             }
         }
     }
@@ -159,7 +168,7 @@ final class GameVM: ObservableObject {
     }
     
     func updateGame() {
-        updateMap()
+        updateMap(for: .realPlayer)
         getColor()
         setSelectedStations()
         isGameOver()

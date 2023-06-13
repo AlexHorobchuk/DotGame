@@ -72,6 +72,13 @@ struct SettingsView: View {
                             }
                         }
                         
+                        Link(destination: URL(string: "https://www.apple.com")!) {
+                            RegularButton(animate: $animate, text: "PRIVACY POLICY")
+                        }
+                        .simultaneousGesture(TapGesture().onEnded {
+                            SoundManager.shared.playSound(for: .click)
+                        })
+                        
                         Button(action: {
                             SoundManager.shared.playSound(for: .click)
                             isShowingSettings = false

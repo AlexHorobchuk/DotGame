@@ -14,21 +14,25 @@ struct GameScreen: View {
     @StateObject var game : GameVM
     
     @State var timer: Timer?
+    @State var botTimer: Timer?
     @State var showingSettings = false
     
     var body: some View {
         
         ZStack {
-            if game.gameState == .preStart {
-                PreGame()
-                    .ignoresSafeArea()
+            if game.gameState == .rules || game.gameState == .preStart {
+                PreGame(gameState: $game.gameState)
                     .onTapGesture {
                         SoundManager.shared.playSound(for: .click)
                         withAnimation(.easeInOut(duration: 1)) {
-                            game.gameState = .start
+                            game.gameState = game.gameState.nextCase
                         }
                     }
                     .transition(.opacity)
+            }
+            
+            if game.gameState == .rules {
+                
             }
             
             if game.gameState == .start {
@@ -61,9 +65,16 @@ struct GameScreen: View {
                             game.updateGame()
                         }
                     }
+                    
+                    self.botTimer = Timer.scheduledTimer(withTimeInterval: 0.35, repeats: true) { _ in
+                        DispatchQueue.main.async {
+                            game.updateMap(for: .bot)
+                        }
+                    }
                 }
                 .onDisappear {
                     timer?.invalidate()
+                    botTimer?.invalidate()
                 }
                 .transition(.opacity)
             }
@@ -81,6 +92,7 @@ struct GameScreen: View {
             SettingsView(isShowingSettings: $showingSettings)
                 .clearModalBackground()
         }
+        .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
@@ -89,8 +101,24 @@ struct GameScreen: View {
                 }) {
                     SettingsButton()
                 }
-                
             }
+            
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    SoundManager.shared.playSound(for: .click)
+                    game.alert = AlertConfirmation.goBack
+                }) {
+                    CloseScreenButton()
+                }
+            }
+        }
+        .alert(item: $game.alert) { alert in
+            Alert(title: alert.title,
+                  message: alert.message,
+                  primaryButton: .destructive(Text("Yes"), action: {
+                presentationMode.wrappedValue.dismiss()
+            }) ,
+                  secondaryButton: alert.dismissButton)
         }
     }
 }
