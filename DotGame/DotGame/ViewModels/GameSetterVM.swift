@@ -10,13 +10,15 @@ import SwiftUI
 final class GameSetterVM: ObservableObject {
     
     @Published var selectedMatrix: MapMatrix
+    @Published var progressVM: ProgressVM
     
     var participators: [Participator] = []
     var matrixs: [MapMatrix]
     
-    init(selectedMatrix: MapMatrix, matrixs: [MapMatrix]) {
+    init(selectedMatrix: MapMatrix, matrixs: [MapMatrix], progressVM: ProgressVM) {
         self.selectedMatrix = selectedMatrix
         self.matrixs = matrixs
+        self.progressVM = progressVM
     }
     
     func makeSelectedMap() -> [[Station]] {
@@ -48,12 +50,17 @@ final class GameSetterVM: ObservableObject {
     
     func makeMapAndParticipators(mapMatrix: MapMatrix) -> [[Station]] {
         var map = Array(repeating: [Station](), count: mapMatrix.matrix.count)
+        let maxRecovery = progressVM.getStationMaxRecovery()
         for (row, arr) in mapMatrix.matrix.enumerated() {
             for (col, val) in arr.enumerated() {
+                let participator = ParticipatorType(rawValue: val)
+                let startBalls = progressVM.getStationStart(owner: participator)
                 let station = Station(type: val == 0 ? .empty : .active,
-                                      owner: ParticipatorType(rawValue: val),
+                                      owner: participator,
                                       position: Coordinate(x: col, y: row),
-                                      ballsAmount: ParticipatorType(rawValue: val) == nil ? 10 : 0)
+                                      ballsAmount: startBalls,
+                                      maxRecovery: maxRecovery,
+                                      startBalls: startBalls)
                 map[row].append(station)
                 makeParticipators(station: station, value: val)
             }

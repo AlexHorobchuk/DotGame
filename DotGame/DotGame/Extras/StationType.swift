@@ -15,3 +15,7 @@ enum StationType {
 enum OwnerType {
     case realPlayer, bot
 }
+
+enum ItemType {
+    case regeneration, stationStart
+}

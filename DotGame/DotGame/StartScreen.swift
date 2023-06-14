@@ -9,9 +9,8 @@ import SwiftUI
 
 struct StartScreen: View {
     
-    @StateObject var gameSetter = GameSetterVM(
-        selectedMatrix: AllMatrixManager.shared.getRandom(),
-        matrixs: AllMatrixManager.shared.matrix)
+    @ObservedObject var gameSetter: GameSetterVM
+    @ObservedObject var progressVM: ProgressVM
     
     @State var animate = true
     @State var animateGreed = true
@@ -28,7 +27,8 @@ struct StartScreen: View {
                 VStack(spacing: 40) {
                     
                     NavigationLink(destination:
-                                    GameScreen(game:
+                                    GameScreen(progress: gameSetter.progressVM,
+                                               game:
                                                 GameVM(gameInfo: gameSetter.getGameInfo(for: .random)))) {
                         RegularButton(animate: $animate, text: "START GAME")
                     }
@@ -45,10 +45,31 @@ struct StartScreen: View {
                                     })
                     
                     Button(action: {
-                        SoundManager.shared.playSound(for: .click)
                         showingSettings = true
                     }) {
                         RegularButton(animate: $animate, text: "SETTINGS")
+                    }
+                    .simultaneousGesture(TapGesture().onEnded {
+                        SoundManager.shared.playSound(for: .click)
+                    })
+                    
+                    Button(action: {
+                        progressVM.buy(item: .stationStart)
+                    }) {
+                        BuyButton(animate: $animate,
+                                  itemType: .stationStart,
+                                  price: progressVM.getPriceFor(item: .stationStart))
+                    }
+                    .simultaneousGesture(TapGesture().onEnded {
+                        SoundManager.shared.playSound(for: .click)
+                    })
+
+                    Button(action: {
+                        progressVM.buy(item: .regeneration)
+                    }) {
+                        BuyButton(animate: $animate,
+                                  itemType: .regeneration,
+                                  price: progressVM.getPriceFor(item: .regeneration))
                     }
                     .simultaneousGesture(TapGesture().onEnded {
                         SoundManager.shared.playSound(for: .click)
@@ -77,6 +98,17 @@ struct StartScreen: View {
                 SettingsView(isShowingSettings: $showingSettings)
                     .clearModalBackground()
             }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    MoneyView(money: progressVM.money)
+                        .scaleEffect(0.8)
+                }
+            }
+            .alert(item: $progressVM.alert) { alert in
+                Alert(title: alert.title,
+                          message: alert.message,
+                          dismissButton: alert.dismissButton)
+            }
         }
         .accentColor(.red)
     }
@@ -84,6 +116,8 @@ struct StartScreen: View {
 
 struct StartView_Previews: PreviewProvider {
     static var previews: some View {
-        StartScreen()
+        StartScreen(gameSetter: GameSetterVM(
+            selectedMatrix: AllMatrixManager.shared.getRandom(),
+            matrixs: AllMatrixManager.shared.matrix, progressVM: ProgressVM()), progressVM: ProgressVM())
     }
 }

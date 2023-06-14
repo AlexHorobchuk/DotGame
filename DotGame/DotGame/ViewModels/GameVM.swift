@@ -15,6 +15,7 @@ final class GameVM: ObservableObject {
     @Published var gameState = GameState.rules
     @Published var didWin = false
     @Published var alert: AlertItem?
+    @Published var result: Int?
     
     var checkBalls: (() -> Set<ParticipatorType>)?
     
@@ -168,9 +169,9 @@ final class GameVM: ObservableObject {
     }
     
     func updateGame() {
-        updateMap(for: .realPlayer)
         getColor()
         setSelectedStations()
+        updateMap(for: .bot)
         isGameOver()
         botsAttack()
     }

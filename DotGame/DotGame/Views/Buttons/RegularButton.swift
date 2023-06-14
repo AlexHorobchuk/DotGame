@@ -32,7 +32,7 @@ struct RegularButton: View {
                 .foregroundColor(.white)
                 .font(.system(size: 22, weight: .bold))
         }
-        .frame(width: 220, height: 55)
+        .frame(width: 250, height: 55)
     }
 }
 

@@ -12,21 +12,32 @@ class Station: Identifiable, ObservableObject {
     @Published var type: StationType
     @Published var owner: ParticipatorType?
     @Published var ballsAmount: Int
+    
     var position: Coordinate
     var id = UUID()
+    var maxRecovery: Int
+    var startBalls: Int
     
-    init(type: StationType, owner: ParticipatorType? = nil, position: Coordinate, ballsAmount: Int) {
+    init(type: StationType,
+         owner: ParticipatorType? = nil,
+         position: Coordinate,
+         ballsAmount: Int,
+         maxRecovery: Int = 10,
+         startBalls: Int = 10) {
+        
         self.type = type
         self.owner = owner
         self.position = position
         self.ballsAmount = ballsAmount
+        self.maxRecovery = maxRecovery
+        self.startBalls = startBalls
     }
     
     func updateStation() {
         guard type == .active else { return }
-        if owner == nil && ballsAmount < 10 { ballsAmount += 1 }
+        if owner == nil && ballsAmount < startBalls { ballsAmount += 1 }
         else {
-            if owner != nil && ballsAmount < 50 { ballsAmount += 1 }
+            if owner != nil && ballsAmount < maxRecovery { ballsAmount += 1 }
         }
     }
     

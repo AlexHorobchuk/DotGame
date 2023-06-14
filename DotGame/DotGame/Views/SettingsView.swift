@@ -91,7 +91,7 @@ struct SettingsView: View {
                     .fixedSize()
                 }
             }
-            .frame(maxWidth: UIScreen.main.bounds.width * 0.75, maxHeight: UIScreen.main.bounds.height * 0.65)
+            .frame(maxWidth: UIScreen.main.bounds.width * 0.75, maxHeight: UIScreen.main.bounds.height * 0.75)
             .background(Color.white)
             .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
             .ignoresSafeArea(edges: .top)

@@ -14,6 +14,7 @@ struct GameOver: View {
     @State var timer: Timer?
     
     var didWin: Bool
+    var money: Int
     
     var body: some View {
         ZStack {
@@ -33,11 +34,14 @@ struct GameOver: View {
                     .minimumScaleFactor(0.5)
                     .padding(.vertical, 25)
                 
+                MoneyView(money: money)
+                    .padding(.vertical)
+                
                 RegularButton(animate: $animate, text: "Tap to Continue")
                     .scaleEffect(animate ? 0.8 : 1)
                 
             }
-            .frame(width: 300, height: 350)
+            .frame(width: 300, height: 500)
             .background(
                 RoundedRectangle(cornerRadius: 20)
                     .fill(.white))
@@ -66,6 +70,6 @@ struct GameOver: View {
 
 struct GameOver_Previews: PreviewProvider {
     static var previews: some View {
-        GameOver(didWin: true)
+        GameOver(didWin: true, money: 50)
     }
 }

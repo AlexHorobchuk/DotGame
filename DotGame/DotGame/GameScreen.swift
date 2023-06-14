@@ -11,6 +11,8 @@ struct GameScreen: View {
     
     @Environment(\.presentationMode) var presentationMode
     
+    @ObservedObject var progress: ProgressVM
+    
     @StateObject var game : GameVM
     
     @State var timer: Timer?
@@ -59,16 +61,16 @@ struct GameScreen: View {
                     Spacer()
                 }
                 .onAppear {
-                    self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+                    self.timer = Timer.scheduledTimer(withTimeInterval: progress.getRegeneration(owner: .bot), repeats: true) { _ in
                         DispatchQueue.main.async {
                             game.getColor()
                             game.updateGame()
                         }
                     }
                     
-                    self.botTimer = Timer.scheduledTimer(withTimeInterval: 0.35, repeats: true) { _ in
+                    self.botTimer = Timer.scheduledTimer(withTimeInterval: progress.getRegeneration(owner: .realPlayer), repeats: true) { _ in
                         DispatchQueue.main.async {
-                            game.updateMap(for: .bot)
+                            game.updateMap(for: .realPlayer)
                         }
                     }
                 }
@@ -80,7 +82,8 @@ struct GameScreen: View {
             }
             
             if game.gameState == .end {
-                GameOver(didWin: game.didWin)
+                GameOver(didWin: game.didWin,
+                         money: game.result ?? 0)
                     .onTapGesture {
                         SoundManager.shared.playSound(for: .click)
                         presentationMode.wrappedValue.dismiss()
@@ -112,6 +115,11 @@ struct GameScreen: View {
                 }
             }
         }
+        .onReceive(game.$gameState) { gameState in
+            if gameState == .end && game.result == nil {
+                game.result = progress.getPrize(didWin: game.didWin)
+            }
+        }
         .alert(item: $game.alert) { alert in
             Alert(title: alert.title,
                   message: alert.message,
@@ -125,7 +133,7 @@ struct GameScreen: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        GameScreen(game:
+        GameScreen(progress: ProgressVM(), game:
                     GameVM(map: MapGenerator().makeMapFromMatrix(mapMatrix: AllMatrixManager.shared.getFirst()),
                            participators: [],
                            matrix: AllMatrixManager.shared.getFirst().matrix))

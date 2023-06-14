@@ -26,10 +26,10 @@ struct CustomGameScreen: View {
             
             VStack {
                 TextView(text: "CUSTOM GAME", fontSize: 26)
-                    .padding(.top, 40)
+                    .padding(.top, 20)
                 
                 MapSample(map: gameSetter.makeSelectedMap())
-                    .padding()
+                    .padding(10)
                 
                 ScrollView {
                     ForEach(gameSetter.matrixs) { matrix in
@@ -46,11 +46,10 @@ struct CustomGameScreen: View {
                         })
                     }
                 }
-                .frame( maxHeight: UIScreen.main.bounds.height / 3.5)
                 
                 
                 NavigationLink(destination: {
-                    GameScreen(game:
+                    GameScreen(progress: gameSetter.progressVM, game:
                                 GameVM(gameInfo: gameSetter.getGameInfo(for: .custom)))}
                                ,
                                label: {
@@ -61,9 +60,9 @@ struct CustomGameScreen: View {
                 .simultaneousGesture(TapGesture().onEnded {
                     SoundManager.shared.playSound(for: .click)
                 })
-                .padding()
+                .padding(10)
                 
-                Spacer(minLength: 25)
+                Spacer(minLength: 40)
             }
         }
         .onAppear {
@@ -113,6 +112,6 @@ struct CustomGameScreen: View {
 struct Custongame_Preview: PreviewProvider {
     static var previews: some View {
         CustomGameScreen(gameSetter: GameSetterVM(selectedMatrix: AllMatrixManager.shared.getFirst(),
-                                            matrixs: AllMatrixManager.shared.matrix))
+                                                  matrixs: AllMatrixManager.shared.matrix, progressVM: ProgressVM()))
     }
 }
