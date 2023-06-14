@@ -62,7 +62,7 @@ struct CustomGameScreen: View {
                 })
                 .padding(10)
                 
-                Spacer(minLength: 40)
+                Spacer(minLength: 60)
             }
         }
         .onAppear {
