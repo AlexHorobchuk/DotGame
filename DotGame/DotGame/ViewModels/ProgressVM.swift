@@ -84,12 +84,10 @@ class ProgressVM: ObservableObject {
         let prize = Int.random(in: (100 + (100 * level)) / 2 ... (100 + (100 * level)))
         if didWin {
             UserDefaultsManager.shared.moneyCount += prize
-            update()
             return prize
         }
         else {
             UserDefaultsManager.shared.moneyCount += prize / 4
-            update()
             return prize / 4
         }
     }

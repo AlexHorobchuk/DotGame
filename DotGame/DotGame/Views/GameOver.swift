@@ -15,6 +15,7 @@ struct GameOver: View {
     
     var didWin: Bool
     var money: Int
+    var action: (()->())?
     
     var body: some View {
         ZStack {
@@ -37,8 +38,10 @@ struct GameOver: View {
                 MoneyView(money: money)
                     .padding(.vertical)
                 
-                RegularButton(animate: $animate, text: "Tap to Continue")
-                    .scaleEffect(animate ? 0.8 : 1)
+                Button(action: { action?() } ) {
+                    RegularButton(animate: $animate, text: "Tap to Continue")
+                        .scaleEffect(animate ? 0.8 : 1)
+                }
                 
             }
             .frame(width: 300, height: 500)

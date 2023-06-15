@@ -33,10 +33,6 @@ struct GameScreen: View {
                     .transition(.opacity)
             }
             
-            if game.gameState == .rules {
-                
-            }
-            
             if game.gameState == .start {
                 VStack {
                     
@@ -83,12 +79,13 @@ struct GameScreen: View {
             
             if game.gameState == .end {
                 GameOver(didWin: game.didWin,
-                         money: game.result ?? 0)
-                    .onTapGesture {
-                        SoundManager.shared.playSound(for: .click)
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                    .transition(.opacity)
+                         money: game.result ?? 0,
+                         action: {
+                    SoundManager.shared.playSound(for: .click)
+                    progress.update()
+                    presentationMode.wrappedValue.dismiss()
+                } )
+                .transition(.opacity)
             }
         }
         .fullScreenCover(isPresented: $showingSettings) {

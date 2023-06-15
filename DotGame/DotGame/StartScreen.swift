@@ -17,6 +17,7 @@ struct StartScreen: View {
     @State var timer: Timer?
     @State var showingSettings = false
     
+    
     var body: some View {
         
         NavigationView {

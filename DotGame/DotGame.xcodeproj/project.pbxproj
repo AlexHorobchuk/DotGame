@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B018A7F62A3AC92400DCF27E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B018A7F52A3AC92400DCF27E /* GoogleService-Info.plist */; };
 		B05377AC2A3181DC00F323A2 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377AB2A3181DC00F323A2 /* GameOver.swift */; };
 		B05377AE2A3181F700F323A2 /* PreGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377AD2A3181F700F323A2 /* PreGame.swift */; };
 		B05377B02A3188CB00F323A2 /* GameBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05377AF2A3188CB00F323A2 /* GameBackground.swift */; };
@@ -62,7 +63,6 @@
 		B07E44BE2A2994A90050BFC6 /* MapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07E44BD2A2994A90050BFC6 /* MapButton.swift */; };
 		B08E32B42A399227009435FE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B08E32B32A399227009435FE /* FirebaseAnalytics */; };
 		B08E32B62A399227009435FE /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = B08E32B52A399227009435FE /* FirebaseMessaging */; };
-		B08E32B92A3996D7009435FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B08E32B82A3996D6009435FE /* GoogleService-Info.plist */; };
 		B0B267B32A29E62B002B3E16 /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B267B22A29E62B002B3E16 /* GameInfo.swift */; };
 		B0B267B72A2B074D002B3E16 /* GameProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B267B62A2B074D002B3E16 /* GameProgress.swift */; };
 		B0B267BD2A2C2832002B3E16 /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B267BC2A2C2832002B3E16 /* GameType.swift */; };
@@ -72,6 +72,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B018A7F52A3AC92400DCF27E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B05377AB2A3181DC00F323A2 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		B05377AD2A3181F700F323A2 /* PreGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreGame.swift; sourceTree = "<group>"; };
 		B05377AF2A3188CB00F323A2 /* GameBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBackground.swift; sourceTree = "<group>"; };
@@ -128,7 +129,6 @@
 		B07E44BB2A2993D90050BFC6 /* MapSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSample.swift; sourceTree = "<group>"; };
 		B07E44BD2A2994A90050BFC6 /* MapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButton.swift; sourceTree = "<group>"; };
 		B08E32B72A3992A9009435FE /* DotGame.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DotGame.entitlements; sourceTree = "<group>"; };
-		B08E32B82A3996D6009435FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B0B267B22A29E62B002B3E16 /* GameInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfo.swift; sourceTree = "<group>"; };
 		B0B267B62A2B074D002B3E16 /* GameProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameProgress.swift; sourceTree = "<group>"; };
 		B0B267BC2A2C2832002B3E16 /* GameType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameType.swift; sourceTree = "<group>"; };
@@ -183,7 +183,7 @@
 			children = (
 				B08E32B72A3992A9009435FE /* DotGame.entitlements */,
 				B07E44AB2A2716C20050BFC6 /* Info.plist */,
-				B08E32B82A3996D6009435FE /* GoogleService-Info.plist */,
+				B018A7F52A3AC92400DCF27E /* GoogleService-Info.plist */,
 				B07E44542A24708D0050BFC6 /* DotGameApp.swift */,
 				B07E44B12A2846E00050BFC6 /* StartScreen.swift */,
 				B07E44B52A284CF90050BFC6 /* CustomGameScreen.swift */,
@@ -389,7 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B07E445C2A24708F0050BFC6 /* Preview Assets.xcassets in Resources */,
-				B08E32B92A3996D7009435FE /* GoogleService-Info.plist in Resources */,
+				B018A7F62A3AC92400DCF27E /* GoogleService-Info.plist in Resources */,
 				B05377D12A36E56E00F323A2 /* Pop.mp3 in Resources */,
 				B05377C92A36B31800F323A2 /* Click.mp3 in Resources */,
 				B05377CD2A36BC0400F323A2 /* Defeat.mp3 in Resources */,
@@ -585,10 +585,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DotGame/DotGame.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DotGame/Preview Content\"";
-				DEVELOPMENT_TEAM = 23F4LV77UD;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = YJ7BQJ4SFX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DotGame/Info.plist;
@@ -603,9 +605,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = AlexHor.DotGame;
+				PRODUCT_BUNDLE_IDENTIFIER = com.NikkiBlake.DotGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = DotGameProvisioningProfile;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -622,10 +625,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DotGame/DotGame.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DotGame/Preview Content\"";
-				DEVELOPMENT_TEAM = 23F4LV77UD;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = YJ7BQJ4SFX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DotGame/Info.plist;
@@ -640,9 +645,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = AlexHor.DotGame;
+				PRODUCT_BUNDLE_IDENTIFIER = com.NikkiBlake.DotGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = DotGameProvisioningProfile;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
